@@ -1,0 +1,45 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="w-100">
+                <mat-label>Buscar</mat-label>
+                <input matInput placeholder="Buscar por nombre" (keyup)="search()" [(ngModel)]="searchString">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover" *ngIf="!cargando_tabla">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Activo</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let contacto of contactos">
+                                <th scope="row">{{contacto.id_contacto}}</th>
+                                <td>{{contacto.nombres}} {{contacto.apellidos}}</td>
+                                <td>{{contacto.nombre_usuario}}</td>
+                                <td>
+                                    <mat-slide-toggle [checked]="contacto.estado" (change)="update(contacto.id_contacto)"></mat-slide-toggle>
+                                </td>
+                                <td>
+                                    <button mat-icon-button (click)="gotoDetail(contacto.id_contacto)" color="primary"  #tooltip="matTooltip" matTooltip="Detalle" matTooltipHideDelay="500">
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <mat-progress-bar mode="indeterminate" *ngIf="cargando_tabla"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

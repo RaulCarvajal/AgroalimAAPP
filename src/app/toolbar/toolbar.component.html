@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" (click)="open()" #tooltip="matTooltip" matTooltip="Home" matTooltipHideDelay="500">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>AAS</span>
+    <span class="example-spacer"></span>
+
+    <a role="button" mat-icon-button class="example-icon" #tooltip="matTooltip" matTooltip="Encuestas" matTooltipHideDelay="500">
+        <mat-icon>ballot</mat-icon>
+    </a>
+
+    <a role="button" mat-icon-button class="example-icon" [routerLink]="['/contactos']" #tooltip="matTooltip" matTooltip="Usuarios" matTooltipHideDelay="500">
+        <mat-icon>people</mat-icon>
+    </a>
+
+    <a role="button" mat-icon-button class="example-icon" [routerLink]="['/empresas']" #tooltip="matTooltip" matTooltip="Empresas" matTooltipHideDelay="500">
+        <mat-icon>business</mat-icon>
+    </a>
+
+    <a role="button" mat-icon-button class="example-icon" [routerLink]="['/catalogos']" #tooltip="matTooltip" matTooltip="Catálogos" matTooltipHideDelay="500">
+        <mat-icon>auto_stories</mat-icon>
+    </a>
+
+</mat-toolbar>

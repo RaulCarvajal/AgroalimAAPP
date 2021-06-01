@@ -1,0 +1,42 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <p class="lead">Sedes</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Agregar</mat-label>
+                        <input matInput placeholder="Corporativo, Planta, etc... (Enter para guardar)" (keyup.enter)="save()" (keyup)="search()" [(ngModel)]="newSede">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover" *ngIf="!cargando_sedes">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Tipo de sede</th>
+                            <th scope="col">Mostrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sede of sedes">
+                                <th scope="row">{{sede.id_cat_sede}}</th>
+                                <td>{{sede.tipo_sede}}</td>
+                                <td>
+                                    <mat-slide-toggle [checked]="sede.estado" (change)="update(sede.id_cat_sede)" ></mat-slide-toggle>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <mat-progress-bar mode="indeterminate" *ngIf="cargando_sedes"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

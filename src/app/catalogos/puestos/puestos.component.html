@@ -1,0 +1,42 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <p class="lead">Puestos</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Agregar</mat-label>
+                        <input matInput placeholder="CEO, Ventas, etc... (Enter para guardar)" (keyup.enter)="save()" (keyup)="search()" [(ngModel)]="newPuesto">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover" *ngIf="!cargando_puestos">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre puesto</th>
+                            <th scope="col">Mostrar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let puesto of puestos">
+                                <th scope="row">{{puesto.id_puesto}}</th>
+                                <td>{{puesto.nombre_puesto}}</td>
+                                <td>
+                                    <mat-slide-toggle [checked]="puesto.estado" (change)="update(puesto.id_puesto)" ></mat-slide-toggle>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <mat-progress-bar mode="indeterminate" *ngIf="cargando_puestos"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

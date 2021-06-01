@@ -1,0 +1,36 @@
+<mat-card *ngIf="!cargando_contacto">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon class="avatar">person_outline</mat-icon>
+        </div>
+        <mat-card-title>{{contacto.nombres}} {{contacto.apellidos}}</mat-card-title>
+        <mat-card-subtitle>{{contacto.nombre_usuario}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="false" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p class="text-break">
+            Pertenece a <b>{{empresa}}</b>, tiene el puesto de <b>{{puesto}}</b> y dentro del sistema cuenta con el rol <b>{{contacto.tipo_usuario}}</b>
+        </p>
+        <p class="text-break">
+            Correo de contacto - {{contacto.email}}
+        </p>
+        <p class="text-break">
+            Teléfono de contacto - {{contacto.telefono}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+
+        <div>
+            <button [disabled]="false" mat-button (click)="gotoDetail()">Detalles de empresa</button>
+            <button [disabled]="false" mat-button (click)="update()">{{contacto.estado?'Bloquear':'Desbloquear'}}</button>
+        </div>
+
+    </mat-card-actions>
+</mat-card>
+<mat-card  *ngIf="cargando_contacto">
+    <div class="row">
+        <div class="col">
+            <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+    </div>
+</mat-card>

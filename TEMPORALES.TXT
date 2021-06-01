@@ -1,0 +1,70 @@
+    <!--<mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" (click)="sidenav.open()" #tooltip="matTooltip" matTooltip="Home" matTooltipHideDelay="500">
+        <mat-icon>menu</mat-icon>
+      </button>
+    
+      <span>C.I.R.</span>
+      <span class="example-spacer"></span>
+    
+      <a role="button" mat-icon-button class="example-icon" [routerLink]="['/devices']" #tooltip="matTooltip" matTooltip="Registros" matTooltipHideDelay="500">
+        <mat-icon>assignment</mat-icon>
+      </a>
+    
+      <a role="button" mat-icon-button class="example-icon" [routerLink]="['/device/add']" #tooltip="matTooltip" matTooltip="Nuevo registro" matTooltipHideDelay="500">
+        <mat-icon>add_circle</mat-icon>
+      </a>
+    
+      <a role="button" mat-icon-button class="example-icon" [routerLink]="['/device/checklist']" #tooltip="matTooltip" matTooltip="Checklist" matTooltipHideDelay="500">
+        <mat-icon>check_circle</mat-icon>
+      </a>
+    
+      <a role="button" mat-icon-button class="example-icon" [routerLink]="['/device/search']" #tooltip="matTooltip" matTooltip="Buscar" matTooltipHideDelay="500">
+        <mat-icon>find_in_page</mat-icon>
+      </a>
+    
+      <a role="button" mat-icon-button class="example-icon" #tooltip="matTooltip" matTooltip="Exportar" matTooltipHideDelay="500">
+        <mat-icon>download</mat-icon>
+      </a>
+    
+      <a role="button" mat-icon-button class="example-icon" #tooltip="matTooltip" matTooltip="KPI" matTooltipHideDelay="500">
+        <mat-icon>show_chart</mat-icon>
+      </a>
+    
+    </mat-toolbar>-->
+
+
+    <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Agroalim Admin Site</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar>
+
+
+
+
+
+
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Web/Redes sociales
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div>
+                <button mat-button>Web</button>
+                <button mat-button>Facebook</button>
+                <button mat-button>Instagram</button>
+                <button mat-button>Twitter</button>
+                <button mat-button>Linkedin</button>
+              </div>
+            </mat-expansion-panel>
+        </mat-accordion>

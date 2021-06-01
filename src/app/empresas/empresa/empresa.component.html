@@ -1,0 +1,43 @@
+<mat-card *ngIf="!cargando_empresa">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <img src="assets/edificios.svg" class="avatar">
+        </div>
+        <mat-card-title>{{empresa.nombre}}</mat-card-title>
+        <mat-card-subtitle>{{empresa.razon_social}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="false" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <h4 >RFC - {{empresa.rfc}}</h4>
+        <h4 >Se fundó en - {{empresa.fecha_creacion}}</h4>
+        <p class="text-break">
+        {{empresa.descripcion_oferta_valor}}
+        </p>
+        <p class="text-break">
+            Los principales clientes son los siguientes : {{empresa.principales_clientes}}
+        </p>
+        <p class="text-break">
+            Los sectores atendidos son los siguientes : {{empresa.sectores_atendidos}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+
+        <div>
+            <button [disabled]="true" mat-button>Encuestas respondidas</button>
+            <button [disabled]="true" mat-button>Colaboradores</button>
+            <a role="button" href="{{empresa.web}}" target="_blank" *ngIf="empresa.web?true:false" mat-button>Web <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.facebook}}" target="_blank" *ngIf="empresa.facebook?true:false" mat-button>Facebook <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.instagram}}" target="_blank" *ngIf="empresa.instagram?true:false" mat-button>Instagram <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.twitter}}" target="_blank" *ngIf="empresa.twitter?true:false" mat-button>Twitter <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.linkedin}}" target="_blank" *ngIf="empresa.linkedin?true:false" mat-button>Linkedin <mat-icon>link</mat-icon></a>
+        </div>
+
+    </mat-card-actions>
+</mat-card>
+<mat-card  *ngIf="cargando_empresa">
+    <div class="row">
+        <div class="col">
+            <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+    </div>
+</mat-card>

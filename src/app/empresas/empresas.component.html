@@ -1,0 +1,41 @@
+<mat-card>
+    <div class="row">
+        <div class="col">
+            <mat-form-field class="w-100">
+                <mat-label>Buscar</mat-label>
+                <input matInput placeholder="Buscar por nombre" (keyup)="search()" [(ngModel)]="searchString">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover" *ngIf="!cargando_tabla">
+                        <thead>
+                            <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">RFC</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let empresa of empresas">
+                                <th scope="row">{{empresa.id_empresa}}</th>
+                                <td>{{empresa.nombre}}</td>
+                                <td>{{empresa.rfc}}</td>
+                                <td>
+                                    <button mat-icon-button (click)="gotoDetail(empresa.id_empresa)" color="primary" #tooltip="matTooltip" matTooltip="Detalle" matTooltipHideDelay="500">
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <mat-progress-bar mode="indeterminate" *ngIf="cargando_tabla"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
