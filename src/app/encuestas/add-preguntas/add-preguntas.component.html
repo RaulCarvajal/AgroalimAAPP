@@ -1,0 +1,81 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon class="avatar">ballot</mat-icon>
+        </div>
+        <mat-card-title>Agregar preguntas a encuesta</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngIf="!cargando">
+        <!--Form Preguntas-->
+        <form [formGroup]="preguntaForm" (ngSubmit)="savePreguntas()">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Pregunta</mat-label>
+                        <input matInput placeholder="Pregunta a realizar" formControlName="pregunta" required>
+                    </mat-form-field>
+                    <div>
+                        <small class="text-danger">Máximo 250 caracteres</small>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="opciones">
+                <div *ngFor="let item of opciones.controls; let pind = index" [formGroupName]="pind">
+                  <div class="row">
+                    <div class="col-11">
+                        <mat-form-field class="w-100">
+                            <mat-label>Opción</mat-label>
+                            <input matInput placeholder="Opcion de respuesta" formControlName="texto" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-1 text-center">
+                      <button type="button" mat-mini-fab color="warn" (click)="delOpcion(pind)" *ngIf="pind>0" #tooltip="matTooltip" matTooltip="Quitar opción" matTooltipHideDelay="500">
+                        <mat-icon>remove</mat-icon>
+                      </button>
+                      <button type="button" mat-mini-fab color="primary" (click)="addOpcion()" *ngIf="pind==0" #tooltip="matTooltip" matTooltip="Añadir opción" matTooltipHideDelay="500">
+                        <mat-icon>add</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button [disabled]="preguntaForm.invalid" mat-button color="primary" class="w-100"><mat-icon>save</mat-icon> Guardar</button>
+                </div>
+            </div>
+        </form>
+        <!--Form Preguntas-->
+        <!--Preguntas agregadas-->
+        <div class="row" *ngIf="preguntas.length>0">
+            <div class="col">
+                <h3>Preguntas guardadas</h3>
+                <ol>
+                    <li *ngFor="let p of preguntas">{{p}}</li>
+                </ol>
+            </div>
+        </div>
+        <!--Preguntas agregadas-->
+        <!--Finalizar-->
+        <div class="row">
+            <div class="col">
+                <button [disabled]="preguntas.length==0" mat-button color="primary" class="w-100" (click)="finalizar()"><mat-icon>save</mat-icon> Finalizar</button>
+            </div>
+        </div>
+        <!--Finalizar-->
+
+    </mat-card-content>
+    <mat-card-content *ngIf="cargando">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-content>
+    <mat-card-content class="text-center text-danger" *ngIf="error">
+        <p class="display-1">:(</p>
+        <p class="display-2">Ocurrio un error</p>
+        <p class="display-3">Por favor de contactar al administrador</p>
+    </mat-card-content>
+    <mat-card-actions>
+
+
+    </mat-card-actions>
+</mat-card>

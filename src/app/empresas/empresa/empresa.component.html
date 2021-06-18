@@ -9,7 +9,7 @@
     <img *ngIf="false" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content>
         <h4 >RFC - {{empresa.rfc}}</h4>
-        <h4 >Se fundó en - {{empresa.fecha_creacion}}</h4>
+        <h4 >Se fundó en - {{empresa.fecha_creacion | date}}</h4>
         <p class="text-break">
         {{empresa.descripcion_oferta_valor}}
         </p>

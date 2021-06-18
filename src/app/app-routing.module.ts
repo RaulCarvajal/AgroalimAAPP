@@ -7,7 +7,11 @@ import { EmpresasComponent } from "./empresas/empresas.component";
 import { EmpresaComponent } from './empresas/empresa/empresa.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ContactoComponent } from './contactos/contacto/contacto.component';
-
+import { EncuestasComponent } from './encuestas/encuestas.component';
+import { NuevaencuestaComponent } from './encuestas/nuevaencuesta/nuevaencuesta.component';
+import { EncuestaComponent } from './encuestas/encuesta/encuesta.component';
+import { EditarPreguntaComponent } from './encuestas/editar-pregunta/editar-pregunta.component';
+import { AddPreguntasComponent } from './encuestas/add-preguntas/add-preguntas.component';
 
 const routes: Routes = [
   {path : "catalogos", component : CatalogosComponent},
@@ -16,7 +20,12 @@ const routes: Routes = [
   {path : "empresas", component : EmpresasComponent},
   {path : "empresas/:id", component : EmpresaComponent},
   {path : "contactos", component : ContactosComponent},
-  {path : "contactos/:id", component : ContactoComponent}
+  {path : "contactos/:id", component : ContactoComponent},
+  {path : "encuestas", component : EncuestasComponent},
+  {path : "encuestas/nueva", component : NuevaencuestaComponent},
+  {path : "encuestas/:id", component : EncuestaComponent},
+  {path : "encuestas/pregunta/:id", component : EditarPreguntaComponent},
+  {path : "encuestas/pregunta/add/:eid", component : AddPreguntasComponent}
 ];
 
 @NgModule({

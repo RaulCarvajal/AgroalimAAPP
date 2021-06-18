@@ -23,6 +23,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatInputModule} from '@angular/material/input';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatRippleModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 /*ANGULAR MATERIAL IMPORTS*/
 
 import { CatalogosComponent } from './catalogos/catalogos.component';
@@ -36,7 +42,15 @@ import { EmpresaComponent } from './empresas/empresa/empresa.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { ContactosService } from "./servicios/contactos.service";
 import { ContactoComponent } from './contactos/contacto/contacto.component';
-
+import { EncuestasComponent } from './encuestas/encuestas.component';
+import { NuevaencuestaComponent } from './encuestas/nuevaencuesta/nuevaencuesta.component';
+import { EncuestasService } from "./servicios/encuestas.service";
+import { PreguntasService } from "./servicios/preguntas.service";
+import { FinalizarSnackbarComponent } from './snackbar/finalizar-snackbar/finalizar-snackbar.component';
+import { EncuestaComponent } from './encuestas/encuesta/encuesta.component';
+import { EditarPreguntaComponent } from './encuestas/editar-pregunta/editar-pregunta.component';
+import { OpcionesService } from "./servicios/opciones.service";
+import { AddPreguntasComponent } from './encuestas/add-preguntas/add-preguntas.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +62,13 @@ import { ContactoComponent } from './contactos/contacto/contacto.component';
     EmpresasComponent,
     EmpresaComponent,
     ContactosComponent,
-    ContactoComponent
+    ContactoComponent,
+    EncuestasComponent,
+    NuevaencuestaComponent,
+    FinalizarSnackbarComponent,
+    EncuestaComponent,
+    EditarPreguntaComponent,
+    AddPreguntasComponent
   ],
   imports: [
     BrowserModule,
@@ -69,13 +89,23 @@ import { ContactoComponent } from './contactos/contacto/contacto.component';
     MatCheckboxModule,
     MatSlideToggleModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatRippleModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     PuestosService,
     SedesService,
     EmpresasService,
-    ContactosService
+    ContactosService,
+    MatDatepickerModule,
+    EncuestasService,
+    PreguntasService,
+    OpcionesService
   ],
   bootstrap: [AppComponent]
 })

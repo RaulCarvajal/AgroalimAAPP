@@ -1,0 +1,76 @@
+<mat-card *ngIf="!cargando_pregunta">
+    <mat-card-header>
+        <mat-card-title>Editar pregunta</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="false" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <form [formGroup]="preguntaForm" (ngSubmit)="savePreguntas()">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Pregunta</mat-label>
+                        <input matInput placeholder="Pregunta a realizar" formControlName="pregunta" required>
+                    </mat-form-field>
+                    <div>
+                        <small class="text-danger">Máximo 250 caracteres</small>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="opciones">
+                <div *ngFor="let item of opcionesA.controls; let pind = index" [formGroupName]="pind">
+                    <div class="row">
+                    <div class="col-11">
+                        <mat-form-field class="w-100">
+                            <mat-label>Opción</mat-label>
+                            <input matInput placeholder="Opcion de respuesta" formControlName="texto" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-1 text-center">
+                        <button type="button" mat-mini-fab color="warn" (click)="delOpcion(pind)" *ngIf="pind>=opciones.length" #tooltip="matTooltip" matTooltip="Quitar opción" matTooltipHideDelay="500">
+                        <mat-icon>remove</mat-icon>
+                        </button>
+                        <div *ngIf="pind<opciones.length" class="mt-2">
+                            <mat-slide-toggle [checked]="opciones[pind].estatus" (change)="updateOpcionStatus(pind)" #tooltip="matTooltip" matTooltip="Cambiar estado" matTooltipHideDelay="100" ></mat-slide-toggle>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Estatus de la pregunta</mat-label>
+                        <mat-select formControlName="estatus" name="food">
+                            <mat-option [value]="true"> Mostrar la pregunta cada que se cunsulte la empresa </mat-option>
+                            <mat-option [value]="false"> No mostrar la pregunta cada que se cunsulte la empresa </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button [disabled]="preguntaForm.invalid" mat-button color="primary" class="w-100"><mat-icon>save</mat-icon> Guardar</button>
+                </div>
+                <div class="col">
+                    <button type="button" mat-button color="primary" (click)="addOpcion()" #tooltip="matTooltip" matTooltip="Añadir opción" matTooltipHideDelay="500" class="w-100">
+                        <mat-icon>add</mat-icon> Añadir opción
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <div>
+
+        </div>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card  *ngIf="cargando_pregunta">
+    <div class="row">
+        <div class="col">
+            <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+    </div>
+</mat-card>

@@ -1,0 +1,62 @@
+<mat-card *ngIf="!cargando_encuesta">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon class="avatar">ballot</mat-icon>
+        </div>
+        <mat-card-title>{{encuesta.nombre}}</mat-card-title>
+        <mat-card-subtitle>Versión {{encuesta.eversion}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="false" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <mat-list role="list" class="w-100">
+            <mat-list-item role="listitem" class="text-break">{{encuesta.descripcion}}</mat-list-item>
+            <mat-list-item role="listitem" class="text-break">Registrada - {{encuesta.fecha_registro | date}}</mat-list-item>
+            <mat-list-item role="listitem" class="text-break">Vigencia - {{encuesta.fecha_vigencia | date}}</mat-list-item>
+            <mat-list-item role="listitem">
+                <mat-slide-toggle [checked]="encuesta.estatus" (change)="update()"> {{encuesta.estatus?'Deshabilitar':'Habilitar'}} </mat-slide-toggle>
+            </mat-list-item>
+            <mat-list-item *ngIf="preguntas.length==0" class="w-100">
+                Sin preguntas
+            </mat-list-item>
+            
+        </mat-list>
+        <div *ngIf="preguntas.length>0" class="w-100">
+            <div *ngIf="!cargando_preguntas">
+                <mat-list *ngIf="preguntas.length>0">
+                    <div mat-subheader>Preguntas</div>
+                    <mat-list-item 
+                    *ngFor="let pregunta of preguntas" 
+                    matRipple 
+                    #tooltip="matTooltip" 
+                    matTooltip="Doble click para editar" 
+                    matTooltipHideDelay="100"
+                    (dblclick)="detallePregunta(pregunta.id_pregunta)">
+                        <mat-icon mat-list-icon>question_answer</mat-icon>
+                        <div mat-line>{{pregunta.pregunta}}</div>
+                        <div mat-line>
+                            {{pregunta.preguntas.split('&').join(', ')}}
+                        </div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+            <div *ngIf="cargando_preguntas">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+
+        <div>
+            <button class="mx-auto" mat-button color="primary" (click)="addPreguntas()">Agregar preguntas</button>
+            <button class="mx-auto" mat-button color="primary" [disabled]="true">Ver estadisticas</button>
+        </div>
+        
+    </mat-card-actions>
+</mat-card>
+<mat-card  *ngIf="cargando_encuesta">
+    <div class="row">
+        <div class="col">
+            <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+    </div>
+</mat-card>

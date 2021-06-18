@@ -10,5 +10,6 @@ export interface contacto {
     telefono: string,
     tipo_usuario: string,
     fk_id_empresa: number,
-    fk_id_puesto: number
+    fk_id_puesto: number,
+    fecha_nacimiento: string
 }
