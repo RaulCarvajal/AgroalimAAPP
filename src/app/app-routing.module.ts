@@ -12,6 +12,10 @@ import { NuevaencuestaComponent } from './encuestas/nuevaencuesta/nuevaencuesta.
 import { EncuestaComponent } from './encuestas/encuesta/encuesta.component';
 import { EditarPreguntaComponent } from './encuestas/editar-pregunta/editar-pregunta.component';
 import { AddPreguntasComponent } from './encuestas/add-preguntas/add-preguntas.component';
+import { ResultadosComponent } from './encuestas/resultados/resultados.component';
+import { MicuentaComponent } from './micuenta/micuenta.component';
+import { ConstruccionComponent } from './construccion/construccion.component';
+
 
 const routes: Routes = [
   {path : "catalogos", component : CatalogosComponent},
@@ -25,7 +29,10 @@ const routes: Routes = [
   {path : "encuestas/nueva", component : NuevaencuestaComponent},
   {path : "encuestas/:id", component : EncuestaComponent},
   {path : "encuestas/pregunta/:id", component : EditarPreguntaComponent},
-  {path : "encuestas/pregunta/add/:eid", component : AddPreguntasComponent}
+  {path : "encuestas/pregunta/add/:eid", component : AddPreguntasComponent},
+  {path : "encuestas/resultados/:eid", component : ResultadosComponent},
+  {path : "micuenta", component : MicuentaComponent},
+  {path : "construccion", component : ConstruccionComponent}
 ];
 
 @NgModule({

@@ -69,5 +69,8 @@ export class EncuestaComponent implements OnInit {
   addPreguntas(){
     this.rt.navigateByUrl(`encuestas/pregunta/add/${this.id}`)
   }
+  verResultados(){
+    this.rt.navigateByUrl(`encuestas/resultados/${this.id}`)
+  }
 
 }

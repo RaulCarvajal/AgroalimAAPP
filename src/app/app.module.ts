@@ -51,6 +51,12 @@ import { EncuestaComponent } from './encuestas/encuesta/encuesta.component';
 import { EditarPreguntaComponent } from './encuestas/editar-pregunta/editar-pregunta.component';
 import { OpcionesService } from "./servicios/opciones.service";
 import { AddPreguntasComponent } from './encuestas/add-preguntas/add-preguntas.component';
+import { ResultadosComponent } from './encuestas/resultados/resultados.component';
+import { MicuentaComponent } from './micuenta/micuenta.component';
+import { ConstruccionComponent } from './construccion/construccion.component';
+import { EncuestasusuariosComponent } from './encuestasusuarios/encuestasusuarios.component';
+import { ResponderencuestaComponent } from './encuestasusuarios/responderencuesta/responderencuesta.component';
+import { ResultadosencuestaComponent } from './encuestasusuarios/resultadosencuesta/resultadosencuesta.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +74,13 @@ import { AddPreguntasComponent } from './encuestas/add-preguntas/add-preguntas.c
     FinalizarSnackbarComponent,
     EncuestaComponent,
     EditarPreguntaComponent,
-    AddPreguntasComponent
+    AddPreguntasComponent,
+    ResultadosComponent,
+    MicuentaComponent,
+    ConstruccionComponent,
+    EncuestasusuariosComponent,
+    ResponderencuestaComponent,
+    ResultadosencuestaComponent
   ],
   imports: [
     BrowserModule,
