@@ -15,22 +15,27 @@ import { AddPreguntasComponent } from './encuestas/add-preguntas/add-preguntas.c
 import { ResultadosComponent } from './encuestas/resultados/resultados.component';
 import { MicuentaComponent } from './micuenta/micuenta.component';
 import { ConstruccionComponent } from './construccion/construccion.component';
-
+import { EncuestasusuariosComponent } from "./encuestasusuarios/encuestasusuarios.component";
+import { ResponderencuestaComponent } from "./encuestasusuarios/responderencuesta/responderencuesta.component";
+import { MiempresausuariosComponent } from './miempresausuarios/miempresausuarios.component';
 
 const routes: Routes = [
   {path : "catalogos", component : CatalogosComponent},
   {path : "catalogos/puestos", component : PuestosComponent},
   {path : "catalogos/sedes", component : SedesComponent},
+  {path : "miempresa", component : MiempresausuariosComponent},
   {path : "empresas", component : EmpresasComponent},
   {path : "empresas/:id", component : EmpresaComponent},
   {path : "contactos", component : ContactosComponent},
   {path : "contactos/:id", component : ContactoComponent},
-  {path : "encuestas", component : EncuestasComponent},
-  {path : "encuestas/nueva", component : NuevaencuestaComponent},
-  {path : "encuestas/:id", component : EncuestaComponent},
-  {path : "encuestas/pregunta/:id", component : EditarPreguntaComponent},
-  {path : "encuestas/pregunta/add/:eid", component : AddPreguntasComponent},
-  {path : "encuestas/resultados/:eid", component : ResultadosComponent},
+  {path : "encuestas", component : EncuestasusuariosComponent},
+  {path : "encuestas/respoder/:id", component : ResponderencuestaComponent},
+  {path : "encuestas/admin", component : EncuestasComponent},
+  {path : "encuestas/admin/nueva", component : NuevaencuestaComponent},
+  {path : "encuestas/admin/:id", component : EncuestaComponent},
+  {path : "encuestas/admin/pregunta/:id", component : EditarPreguntaComponent},
+  {path : "encuestas/admin/pregunta/add/:eid", component : AddPreguntasComponent},
+  {path : "encuestas/admin/resultados/:eid", component : ResultadosComponent},
   {path : "micuenta", component : MicuentaComponent},
   {path : "construccion", component : ConstruccionComponent}
 ];

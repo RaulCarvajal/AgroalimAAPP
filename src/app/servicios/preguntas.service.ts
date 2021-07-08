@@ -20,6 +20,10 @@ export class PreguntasService {
     return this.http.get<pregunta_tabla_admin[]>(`${api.path}admin_preguntas/${id}`)
   }
 
+  getPreguntasUsuarios(id:number){
+    return this.http.get<any>(`${api.path}preguntasusuarios/${id}`)
+  }
+
   getOne(id:number){
     return this.http.get<pregunta>(`${api.path}preguntas/${id}`);
   }

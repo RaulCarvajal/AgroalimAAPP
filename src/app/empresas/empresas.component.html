@@ -8,6 +8,11 @@
         </div>
     </div>
     <div class="row">
+        <div class="col text-left">
+            <small class="text-muted">Click/Tap para ver detalle</small>
+        </div>
+    </div>
+    <div class="row">
         <div class="col">
             <div class="row">
                 <div class="col">
@@ -17,19 +22,13 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">RFC</th>
-                            <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let empresa of empresas">
+                            <tr *ngFor="let empresa of empresas"  (click)="gotoDetail(empresa.id_empresa)">
                                 <th scope="row">{{empresa.id_empresa}}</th>
                                 <td>{{empresa.nombre}}</td>
                                 <td>{{empresa.rfc}}</td>
-                                <td>
-                                    <button mat-icon-button (click)="gotoDetail(empresa.id_empresa)" color="primary" #tooltip="matTooltip" matTooltip="Detalle" matTooltipHideDelay="500">
-                                        <mat-icon>info</mat-icon>
-                                    </button>
-                                </td>
                             </tr>
                         </tbody>
                     </table>

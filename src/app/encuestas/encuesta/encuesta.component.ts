@@ -55,7 +55,7 @@ export class EncuestaComponent implements OnInit {
   }
 
   detallePregunta(id:number){
-    this.rt.navigateByUrl(`encuestas/pregunta/${id}`);
+    this.rt.navigateByUrl(`encuestas/admin/pregunta/${id}`);
   }
 
   update(){
@@ -67,10 +67,10 @@ export class EncuestaComponent implements OnInit {
   }
 
   addPreguntas(){
-    this.rt.navigateByUrl(`encuestas/pregunta/add/${this.id}`)
+    this.rt.navigateByUrl(`encuestas/admin/pregunta/add/${this.id}`)
   }
   verResultados(){
-    this.rt.navigateByUrl(`encuestas/resultados/${this.id}`)
+    this.rt.navigateByUrl(`encuestas/admin/resultados/${this.id}`)
   }
 
 }

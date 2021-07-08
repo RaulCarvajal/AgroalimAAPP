@@ -44,6 +44,6 @@ export class EncuestasComponent implements OnInit {
   }
 
   goDetail(id:number){
-    this.rt.navigateByUrl(`encuestas/${id}`)
+    this.rt.navigateByUrl(`encuestas/admin/${id}`)
   }
 }

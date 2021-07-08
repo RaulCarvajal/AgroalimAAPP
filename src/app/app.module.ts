@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
+import { registerLocaleData } from '@angular/common';
+
+import localeEsMX from '@angular/common/locales/es-MX';
+registerLocaleData(localeEsMX, 'es-MX');
 
 /*ANGULAR MATERIAL IMPORTS*/
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -57,6 +61,8 @@ import { ConstruccionComponent } from './construccion/construccion.component';
 import { EncuestasusuariosComponent } from './encuestasusuarios/encuestasusuarios.component';
 import { ResponderencuestaComponent } from './encuestasusuarios/responderencuesta/responderencuesta.component';
 import { ResultadosencuestaComponent } from './encuestasusuarios/resultadosencuesta/resultadosencuesta.component';
+import { EncuestadialogComponent } from './encuestasusuarios/encuestadialog/encuestadialog.component';
+import { MiempresausuariosComponent } from './miempresausuarios/miempresausuarios.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +86,9 @@ import { ResultadosencuestaComponent } from './encuestasusuarios/resultadosencue
     ConstruccionComponent,
     EncuestasusuariosComponent,
     ResponderencuestaComponent,
-    ResultadosencuestaComponent
+    ResultadosencuestaComponent,
+    EncuestadialogComponent,
+    MiempresausuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +125,8 @@ import { ResultadosencuestaComponent } from './encuestasusuarios/resultadosencue
     MatDatepickerModule,
     EncuestasService,
     PreguntasService,
-    OpcionesService
+    OpcionesService,
+    { provide: LOCALE_ID, useValue: 'es-MX' }
   ],
   bootstrap: [AppComponent]
 })

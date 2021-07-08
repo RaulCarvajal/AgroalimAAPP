@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { encuesta, encuesta_tabla_admin } from '../interfaces/encuestas.interface';
+import { encuesta, encuesta_tabla_admin, encuesta_tabla_user } from '../interfaces/encuestas.interface';
 import { api } from "./server.path";
 
 @Injectable({
@@ -18,6 +18,10 @@ export class EncuestasService {
 
   getAllEncuestasAdministratorTable(){
     return this.http.get<encuesta_tabla_admin[]>(`${api.path}admin_encuestas`);
+  }
+
+  getAllEncuestaUsersTable(){
+    return this.http.get<encuesta_tabla_user[]>(`${api.path}encuestasusuarios`);
   }
 
   getOneById(id:number){

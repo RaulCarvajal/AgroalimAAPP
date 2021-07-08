@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{data.nombre}}</h1>
+<div mat-dialog-content>
+    <small>Versión {{data.eversion}}</small>
+
+    <p>{{data.descripcion}}</p>
+    <p>Cuenta con un total de {{data.preguntas}} preguntas</p>
+    
+    <p>Tiene hasta {{data.fecha_vigencia | date:'fullDate'}} para contestar.</p>
+</div>
+<div mat-dialog-actions>
+    <div class="row">
+        <div class="col">
+            <button class="w-100" mat-button (click)="onNoClick()">Cerrar</button>
+        </div>
+        <div class="col">
+            <button class="w-100" mat-button cdkFocusInitial (click)="gotoResponder(data.id_encuesta)">Comenzar encuesta</button>
+        </div>
+    </div>
+</div>

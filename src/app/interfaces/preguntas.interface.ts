@@ -29,3 +29,10 @@ export interface pregunta_tabla_admin {
     estatus: boolean,
     preguntas: string
 }
+
+export interface preguntas_usuarios {
+    id_pregunta: number, 
+    pregunta: string, 
+    fecha_registro: string, 
+    opciones: string
+}

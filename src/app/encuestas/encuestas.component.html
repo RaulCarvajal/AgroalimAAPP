@@ -11,6 +11,11 @@
                 <a role="button" [routerLink]="['nueva']" mat-stroked-button color="primary" class="mt-2 w-100"><mat-icon>add</mat-icon>  Nueva</a>
             </div>
         </div>
+        <div class="row">
+            <div class="col text-left">
+                <small class="text-muted">Click/Tap para ver detalle</small>
+            </div>
+        </div>
         <div>
             <div *ngIf="cargando_tabla">
                 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
@@ -24,22 +29,16 @@
                         <th scope="col">Versión</th>
                         <th scope="col">Preguntas</th>
                         <th scope="col">Estatus</th>
-                        <th scope="col">Detalle</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let encuesta of encuestas">
+                        <tr *ngFor="let encuesta of encuestas" (click)="goDetail(encuesta.id_encuesta)">
                             <th scope="row">{{encuesta.id_encuesta}}</th>
                             <td>{{encuesta.nombre}}</td>
                             <td class="">{{encuesta.eversion}}</td>
                             <td class="">{{encuesta.preguntas}}</td>
                             <td class="">
                                 {{encuesta.estatus?"Activa":"Inactiva"}}
-                            </td>
-                            <td class="">
-                                <button mat-icon-button (click)="goDetail(encuesta.id_encuesta)" color="primary"  #tooltip="matTooltip" matTooltip="Detalle" matTooltipHideDelay="500">
-                                    <mat-icon>info</mat-icon>
-                                </button>
                             </td>
                         </tr>
                     </tbody>

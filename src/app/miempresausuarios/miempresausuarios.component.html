@@ -1,0 +1,34 @@
+<mat-card *ngIf="!cargando_empresa">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <mat-icon class="avatar">business</mat-icon>
+        </div>
+        <mat-card-title>{{empresa.nombre}}</mat-card-title>
+        <mat-card-subtitle>{{empresa.razon_social}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="text-break"><b>RFC</b> {{empresa.rfc}}</p>
+        <p class="text-break"><b>Fundada en </b> {{empresa.fecha_creacion | date}}</p>
+        <p class="text-break">{{empresa.descripcion_oferta_valor}}</p>
+        <p class="text-break"><b>Los principales clientes son los siguientes</b> - {{empresa.principales_clientes}}</p>
+        <p class="text-break"><b>Los sectores atendidos son los siguientes</b> - {{empresa.sectores_atendidos}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <div>
+            <button [disabled]="true" mat-button>Encuestas respondidas</button>
+            <button [disabled]="true" mat-button>Colaboradores</button>
+            <a role="button" href="{{empresa.web}}" target="_blank" *ngIf="empresa.web?true:false" mat-button>Web <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.facebook}}" target="_blank" *ngIf="empresa.facebook?true:false" mat-button>Facebook <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.instagram}}" target="_blank" *ngIf="empresa.instagram?true:false" mat-button>Instagram <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.twitter}}" target="_blank" *ngIf="empresa.twitter?true:false" mat-button>Twitter <mat-icon>link</mat-icon></a>
+            <a role="button" href="{{empresa.linkedin}}" target="_blank" *ngIf="empresa.linkedin?true:false" mat-button>Linkedin <mat-icon>link</mat-icon></a>
+        </div>
+    </mat-card-actions>
+</mat-card>
+<mat-card *ngIf="cargando_empresa">
+    <div class="row">
+        <div class="col">
+            <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+    </div>
+</mat-card>

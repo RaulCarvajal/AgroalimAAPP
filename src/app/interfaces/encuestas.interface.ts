@@ -17,3 +17,12 @@ export interface encuesta_tabla_admin {
     nombre: string,
     preguntas: number,
 }
+
+export interface encuesta_tabla_user {
+    descripcion: string,
+    eversion: number,
+    fecha_vigencia: string,
+    id_encuesta: number,
+    nombre: string,
+    preguntas: number
+}
