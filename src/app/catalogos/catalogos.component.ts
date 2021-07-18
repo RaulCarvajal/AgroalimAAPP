@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-catalogos',
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class CatalogosComponent implements OnInit {
 
 
-  constructor() { 
+  constructor(
+    private as:AuthService
+  ) { 
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
   }
 
 

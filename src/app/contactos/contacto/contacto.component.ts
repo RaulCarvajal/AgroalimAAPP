@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { contacto } from 'src/app/interfaces/contactos.interface';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { ContactosService } from 'src/app/servicios/contactos.service';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
 import { PuestosService } from 'src/app/servicios/puestos.service';
@@ -23,12 +24,14 @@ export class ContactoComponent implements OnInit {
     private ps:PuestosService,
     private es:EmpresasService,
     private ar:ActivatedRoute,
-    private rt:Router
+    private rt:Router,
+    private as:AuthService
   ) {
     this.id = this.ar.snapshot.paramMap.get("id");
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     this.getcontactoById(this.id)
   }
 

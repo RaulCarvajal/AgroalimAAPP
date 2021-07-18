@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { encuesta } from 'src/app/interfaces/encuestas.interface';
 import { pregunta, pregunta_tabla_admin } from 'src/app/interfaces/preguntas.interface';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { EncuestasService } from 'src/app/servicios/encuestas.service';
 import { PreguntasService } from 'src/app/servicios/preguntas.service';
 import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
@@ -24,12 +25,14 @@ export class EncuestaComponent implements OnInit {
     private es:EncuestasService,
     private ar:ActivatedRoute,
     private ps:PreguntasService,
-    private rt:Router
+    private rt:Router,
+    private as:AuthService
   ) { 
     this.id = this.ar.snapshot.paramMap.get("id");
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     this.getEncuesta(this.id);
   }
 

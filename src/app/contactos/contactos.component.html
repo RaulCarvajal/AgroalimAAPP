@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col text-left">
-            <small class="text-muted">Click/Tap para ver detalle</small>
+            <small class="text-muted">Doble Click/Tap para ver detalle</small>
         </div>
     </div>
     <div class="row">
@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let contacto of contactos" (click)="gotoDetail(contacto.id_contacto)">
+                            <tr *ngFor="let contacto of contactos" (dblclick)="gotoDetail(contacto.id_contacto)">
                                 <th scope="row">{{contacto.id_contacto}}</th>
                                 <td>{{contacto.nombres}} {{contacto.apellidos}}</td>
                                 <td>{{contacto.nombre_usuario}}</td>

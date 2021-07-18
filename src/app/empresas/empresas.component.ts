@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { empresa } from '../interfaces/empresas.interface';
+import { AuthService } from '../servicios/auth.service';
 import { EmpresasService } from '../servicios/empresas.service';
 
 @Component({
@@ -16,10 +17,12 @@ export class EmpresasComponent implements OnInit {
   cargando_tabla:boolean = true;
   constructor(
     private es:EmpresasService,
-    private rt:Router
+    private rt:Router,
+    private as:AuthService
   ) { }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     this.getFullEmpresas();
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { empresa } from 'src/app/interfaces/empresas.interface';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { EmpresasService } from 'src/app/servicios/empresas.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class EmpresaComponent implements OnInit {
 
   constructor(
     private es:EmpresasService,
-    private ar:ActivatedRoute
+    private ar:ActivatedRoute,
+    private as:AuthService
   ) {
     this.id = this.ar.snapshot.paramMap.get("id");
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     this.getEmpresaById(this.id)
   }
 

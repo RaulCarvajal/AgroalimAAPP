@@ -3,26 +3,37 @@
         <mat-card-title>{{encuesta.nombre}}</mat-card-title>
         <mat-card-subtitle>Versión {{encuesta.eversion}} - {{encuesta.descripcion}}</mat-card-subtitle>
         <mat-card-subtitle>Vigencia al - {{encuesta.fecha_vigencia | date}}</mat-card-subtitle>
+        <mat-card-subtitle>
+            Leer bien las preguntas y las opciones, todas las respuestas se guardarán al dar click en finalizar, en caso de cerrar o recargar la página se borraran los resultados.
+        </mat-card-subtitle>
     </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content>
-        <mat-card *ngFor="let pregunta of preguntas" class="mt-2">
-            <p class="lead">{{pregunta.pregunta}}</p >
-            <mat-card-subtitle>{{pregunta.fecha_registro | date}}</mat-card-subtitle>
-            <mat-card-content>
-                <mat-form-field class="w-100">
-                <mat-label>Elige una opción</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let opcion of pregunta.opciones.split('&')" value="opcion.split('\\')[0]">{{opcion.split('\\')[1]}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </mat-card-content>
-        </mat-card>
-    </mat-card-content>
-    <mat-card-actions>
-
-    </mat-card-actions>
 </mat-card>
+<div *ngIf="!cargando">
+    <form [formGroup]="preguntasForm" (ngSubmit)="save()">
+        <div formArrayName="qa">
+            <div *ngFor="let item of pForm.controls; let pind = index" [formGroupName]="pind">
+                <mat-card class="mt-2">
+                    <p class="lead">{{preguntas[pind].pregunta}}</p >
+                    <mat-card-subtitle>{{preguntas[pind].fecha_registro | date}}</mat-card-subtitle>
+                    <mat-card-content>
+                        <mat-form-field class="w-100">
+                        <mat-label>Elige una opción</mat-label>
+                            <mat-select formControlName="fk_id_opcion">
+                                <mat-option *ngFor="let opcion of preguntas[pind].opciones.split('&')" value="{{+opcion.split('\\')[0]}}">{{opcion.split('\\')[1]}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-card-content> 
+                </mat-card>
+            </div>
+        </div>
+    </form>
+</div>
+<mat-card class="mt-2" *ngIf="!cargando">
+    <mat-card-content>
+        <button mat-flat-button color="primary" class="w-100" [disabled]="preguntasForm.invalid" (click)="save()">Finalizar</button>
+    </mat-card-content>
+</mat-card>
+
 <mat-card  *ngIf="cargando">
     <div class="row">
         <div class="col">
@@ -30,3 +41,22 @@
         </div>
     </div>
 </mat-card>
+
+
+<!--
+
+<mat-card *ngFor="let pregunta of preguntas" class="mt-2">
+    <p class="lead">{{pregunta.pregunta}}</p >
+    <mat-card-subtitle>{{pregunta.fecha_registro | date}}</mat-card-subtitle>
+    <mat-card-content>
+        <mat-form-field class="w-100">
+        <mat-label>Elige una opción</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let opcion of pregunta.opciones.split('&')" value="opcion.split('\\')[0]">{{opcion.split('\\')[1]}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-content> 
+</mat-card>
+
+-->
+

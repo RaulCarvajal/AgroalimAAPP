@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { LogonComponent } from './logon/logon.component';
 import { CatalogosComponent } from './catalogos/catalogos.component';
 import { PuestosComponent } from "./catalogos/puestos/puestos.component";
 import { SedesComponent } from "./catalogos/sedes/sedes.component";
@@ -18,8 +20,12 @@ import { ConstruccionComponent } from './construccion/construccion.component';
 import { EncuestasusuariosComponent } from "./encuestasusuarios/encuestasusuarios.component";
 import { ResponderencuestaComponent } from "./encuestasusuarios/responderencuesta/responderencuesta.component";
 import { MiempresausuariosComponent } from './miempresausuarios/miempresausuarios.component';
+import { NoautorizadoComponent } from './noautorizado/noautorizado.component';
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
+  {path : "logon", component : LogonComponent},
+  {path : "registro", component : RegistroComponent},
   {path : "catalogos", component : CatalogosComponent},
   {path : "catalogos/puestos", component : PuestosComponent},
   {path : "catalogos/sedes", component : SedesComponent},
@@ -37,7 +43,8 @@ const routes: Routes = [
   {path : "encuestas/admin/pregunta/add/:eid", component : AddPreguntasComponent},
   {path : "encuestas/admin/resultados/:eid", component : ResultadosComponent},
   {path : "micuenta", component : MicuentaComponent},
-  {path : "construccion", component : ConstruccionComponent}
+  {path : "construccion", component : ConstruccionComponent},
+  {path : "403_Forbidden", component : NoautorizadoComponent}
 ];
 
 @NgModule({

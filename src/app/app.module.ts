@@ -33,6 +33,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
 /*ANGULAR MATERIAL IMPORTS*/
 
 import { CatalogosComponent } from './catalogos/catalogos.component';
@@ -63,6 +64,14 @@ import { ResponderencuestaComponent } from './encuestasusuarios/responderencuest
 import { ResultadosencuestaComponent } from './encuestasusuarios/resultadosencuesta/resultadosencuesta.component';
 import { EncuestadialogComponent } from './encuestasusuarios/encuestadialog/encuestadialog.component';
 import { MiempresausuariosComponent } from './miempresausuarios/miempresausuarios.component';
+import { LogonComponent } from './logon/logon.component';
+import { AuthService } from "./servicios/auth.service";
+import { NoautorizadoComponent } from './noautorizado/noautorizado.component';
+import { RegistroEmpresaComponent } from './registro/registro-empresa/registro-empresa.component';
+import { RegistroContactoComponent } from './registro/registro-contacto/registro-contacto.component';
+import { RegistroComponent } from './registro/registro.component';
+import { RfcexistenteSnackbarComponent } from './snackbar/rfcexistente-snackbar/rfcexistente-snackbar.component';
+import { ContactoexistenteSnackbarComponent } from './snackbar/contactoexistente-snackbar/contactoexistente-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +97,14 @@ import { MiempresausuariosComponent } from './miempresausuarios/miempresausuario
     ResponderencuestaComponent,
     ResultadosencuestaComponent,
     EncuestadialogComponent,
-    MiempresausuariosComponent
+    MiempresausuariosComponent,
+    LogonComponent,
+    NoautorizadoComponent,
+    RegistroEmpresaComponent,
+    RegistroContactoComponent,
+    RegistroComponent,
+    RfcexistenteSnackbarComponent,
+    ContactoexistenteSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +131,8 @@ import { MiempresausuariosComponent } from './miempresausuarios/miempresausuario
     MatSnackBarModule,
     MatRippleModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [
     PuestosService,
@@ -126,6 +143,7 @@ import { MiempresausuariosComponent } from './miempresausuarios/miempresausuario
     EncuestasService,
     PreguntasService,
     OpcionesService,
+    AuthService,
     { provide: LOCALE_ID, useValue: 'es-MX' }
   ],
   bootstrap: [AppComponent]

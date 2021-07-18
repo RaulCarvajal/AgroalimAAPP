@@ -7,6 +7,7 @@ import { regex } from "../../validators/regex.consts";
 import { FinalizarSnackbarComponent } from "../../snackbar/finalizar-snackbar/finalizar-snackbar.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-nuevaencuesta',
@@ -30,10 +31,12 @@ export class NuevaencuestaComponent implements OnInit {
     private es:EncuestasService,
     private ps:PreguntasService,
     private sb: MatSnackBar,
-    private lc:Location
+    private lc:Location,
+    private as: AuthService,
   ) { }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     this.initEncuestaForm();
     this.initPreguntaForm();
   }
@@ -46,7 +49,7 @@ export class NuevaencuestaComponent implements OnInit {
       eversion : [0.01, [Validators.required]],
       fecha_registro : [null,[]],
       estatus : [0],
-      fk_id_administrador : [1]
+      fk_id_administrador : [this.as.getSysAdminId()]
     });
   }
 

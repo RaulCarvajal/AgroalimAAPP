@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { encuesta_tabla_admin } from '../interfaces/encuestas.interface';
+import { AuthService } from '../servicios/auth.service';
 import { EncuestasService } from '../servicios/encuestas.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class EncuestasComponent implements OnInit {
 
   constructor(
     private es:EncuestasService,
-    private rt:Router
+    private rt:Router,
+    private as:AuthService
   ) {
     this.getEncuestasTableAdmin();
    }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
   }
 
   getEncuestasTableAdmin(){

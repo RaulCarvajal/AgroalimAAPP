@@ -3,7 +3,8 @@
     <small>Versión {{data.eversion}}</small>
 
     <p>{{data.descripcion}}</p>
-    <p>Cuenta con un total de {{data.preguntas}} preguntas</p>
+    <p *ngIf="data.preguntas">Cuenta con un total de {{data.preguntas}} preguntas</p>
+    <p *ngIf="!data.preguntas">No contiene preguntas</p>
     
     <p>Tiene hasta {{data.fecha_vigencia | date:'fullDate'}} para contestar.</p>
 </div>
@@ -13,7 +14,7 @@
             <button class="w-100" mat-button (click)="onNoClick()">Cerrar</button>
         </div>
         <div class="col">
-            <button class="w-100" mat-button cdkFocusInitial (click)="gotoResponder(data.id_encuesta)">Comenzar encuesta</button>
+            <button class="w-100" mat-button (click)="gotoResponder(data.id_encuesta)" [disabled]="data.preguntas?false:true">{{data.preguntas?'Comenzar encuesta':'Sin preguntas'}}</button>
         </div>
     </div>
 </div>

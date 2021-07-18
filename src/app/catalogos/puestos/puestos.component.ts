@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { puesto } from '../../interfaces/puestos.interface';
 import { PuestosService } from '../../servicios/puestos.service';
 
@@ -16,12 +17,14 @@ export class PuestosComponent implements OnInit {
   /**Puestos vars */
 
   constructor(
-    private ps:PuestosService
+    private ps:PuestosService,
+    private as:AuthService
   ) { 
     this.getFullPuestos()
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
   }
 
   getFullPuestos(){

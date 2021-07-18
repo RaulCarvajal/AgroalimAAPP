@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-micuenta',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MicuentaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private as:AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.as.isLoged();
   }
 
 }

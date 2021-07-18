@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { sede } from 'src/app/interfaces/sedes.interface';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { SedesService } from 'src/app/servicios/sedes.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class SedesComponent implements OnInit {
   /**Puestos vars */
 
   constructor(
-    private ss:SedesService
+    private ss:SedesService,
+    private as:AuthService
   ) { 
     this.getFullSedes()
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
   }
 
   

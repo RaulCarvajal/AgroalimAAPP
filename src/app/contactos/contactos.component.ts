@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { contacto } from '../interfaces/contactos.interface';
+import { AuthService } from '../servicios/auth.service';
 import { ContactosService } from '../servicios/contactos.service';
 
 @Component({
@@ -16,11 +17,13 @@ export class ContactosComponent implements OnInit {
 
   constructor(
     private cs:ContactosService,
-    private rt:Router
+    private rt:Router,
+    private as:AuthService
   ) { }
 
   ngOnInit(): void {
-    this.getFullContactos()
+    this.as.sysadminAuth();
+    this.getFullContactos();
   } 
 
   getFullContactos(){

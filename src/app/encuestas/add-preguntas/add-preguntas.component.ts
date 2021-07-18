@@ -8,6 +8,7 @@ import { FinalizarSnackbarComponent } from 'src/app/snackbar/finalizar-snackbar/
 import { regex } from 'src/app/validators/regex.consts';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-add-preguntas',
@@ -29,13 +30,15 @@ export class AddPreguntasComponent implements OnInit {
     private ps:PreguntasService,
     private sb: MatSnackBar,
     private lc:Location,
-    private ar:ActivatedRoute
+    private ar:ActivatedRoute,
+    private as:AuthService
   ) {
     //Get parametro
     this.idEncuesta = this.ar.snapshot.paramMap.get("eid");
    }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     this.initPreguntaForm();
   }
 

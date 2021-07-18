@@ -1,0 +1,100 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Registro de Usuario principal</mat-card-title>
+        <mat-card-subtitle>Parte 2/2. Sigamos registrando sus datos personales, pasaras a ser el <strong>administrador</strong> de tu empresa dentro de la aplicación, este rol incluye tareas cuales cómo agregar y administrar colaboradores, contestar encuestas y visualizar los resultados.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form *ngIf="!cargando" class="example-form" [formGroup]="formContacto" (ngSubmit)="saveContacto()">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Nombres</mat-label>
+                        <input type="text" matInput formControlName="nombres" placeholder="Ingresa tu/tus nombre(s)" required>
+                        <mat-error *ngIf="formContacto.get('nombres')!.hasError('required')">Campo requerido</mat-error>
+                        <mat-error *ngIf="formContacto.get('nombres')!.hasError('pattern')">Nombres inválido</mat-error>
+                        <mat-error *ngIf="formContacto.get('nombres')!.hasError('maxlength')">Máximo 50 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Apellidos</mat-label>
+                        <input type="text" matInput formControlName="apellidos" placeholder="Ingresa tu/tus apellidos(s)" required>
+                        <mat-error *ngIf="formContacto.get('apellidos')!.hasError('required')">Campo requerido</mat-error>
+                        <mat-error *ngIf="formContacto.get('apellidos')!.hasError('pattern')">Apellidos inválido</mat-error>
+                        <mat-error *ngIf="formContacto.get('apellidos')!.hasError('maxlength')">Máximo 50 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input type="date" matInput formControlName="fecha_nacimiento" placeholder="Ingresa tu fecha de nacimiento" required>
+                        <mat-error *ngIf="formContacto.get('fecha_nacimiento')!.hasError('required')">Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput formControlName="email" placeholder="Ingresa tu correo electrónico" required>
+                        <mat-error *ngIf="formContacto.get('email')!.hasError('required')">Campo requerido</mat-error>
+                        <mat-error *ngIf="formContacto.get('email')!.hasError('email')">Email inválido</mat-error>
+                        <mat-error *ngIf="formContacto.get('email')!.hasError('maxlength')">Máximo 30 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Teléfono</mat-label>
+                        <input type="text" matInput formControlName="telefono" placeholder="Ingresa tu correo teléfono" required>
+                        <mat-error *ngIf="formContacto.get('telefono')!.hasError('required')">Campo requerido</mat-error>
+                        <mat-error *ngIf="formContacto.get('telefono')!.hasError('patten')">Teléfono inválido</mat-error>
+                        <mat-error *ngIf="formContacto.get('telefono')!.hasError('maxlength')">Máximo 30 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Que puesto ocupas en tu empresa?</mat-label>
+                        <mat-select formControlName="fk_id_puesto" required>
+                            <mat-option *ngFor="let puesto of puestos" [value]="puesto.id_puesto">
+                                {{puesto.nombre_puesto}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formContacto.get('fk_id_puesto')!.hasError('required')">Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Nombre de usuario</mat-label>
+                        <input type="text" matInput formControlName="nombre_usuario" placeholder="Elige tu nombre de usuario(Sujeto a disponibilidad)" required>
+                        <mat-error *ngIf="formContacto.get('nombre_usuario')!.hasError('required')">Campo requerido</mat-error>
+                        <mat-error *ngIf="formContacto.get('nombre_usuario')!.hasError('patten')">Nombre de usaurio inválido</mat-error>
+                        <mat-error *ngIf="formContacto.get('nombre_usuario')!.hasError('maxlength')">Máximo 30 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" matInput formControlName="contrasena" placeholder="Elige tu contraeña de ingreso" required>
+                        <mat-error *ngIf="formContacto.get('contrasena')!.hasError('required')">Campo requerido</mat-error>
+                        <mat-error *ngIf="formContacto.get('contrasena')!.hasError('patten')">Contraseña inválido</mat-error>
+                        <mat-error *ngIf="formContacto.get('contrasena')!.hasError('maxlength')">Máximo 12 carácteres</mat-error>
+                        <mat-error *ngIf="formContacto.get('contrasena')!.hasError('minlength')">Minimo de 6 carácteres</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="w-100" mat-flat-button color="primary" [disabled]="formContacto.invalid">Guardar e iniciar</button>
+                </div>
+            </div>
+        </form>
+        <mat-progress-bar *ngIf="cargando" mode="indeterminate"></mat-progress-bar>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+</mat-card>

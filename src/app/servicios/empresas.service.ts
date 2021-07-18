@@ -19,4 +19,12 @@ export class EmpresasService {
   getFullOne(id:string){
     return this.http.get<empresa>(`${api.path}admin_empresas/${id}`)
   }
+
+  save(data:empresa){
+    return this.http.post<empresa>(`${api.path}empresas`,data)
+  }
+
+  getByRfc(rfc:string){
+    return this.http.get<empresa[]>(`${api.path}empresasPorRfc?rfc=${rfc}`)
+  }
 }

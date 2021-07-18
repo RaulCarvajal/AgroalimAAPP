@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { opcion, pregunta, preguntaReq } from 'src/app/interfaces/preguntas.interface';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { OpcionesService } from 'src/app/servicios/opciones.service';
 import { PreguntasService } from 'src/app/servicios/preguntas.service';
 import { regex } from 'src/app/validators/regex.consts';
@@ -25,13 +26,15 @@ export class EditarPreguntaComponent implements OnInit {
     private fb:FormBuilder,
     private ps:PreguntasService,
     private ar:ActivatedRoute,
-    private os:OpcionesService
+    private os:OpcionesService,
+    private as:AuthService
   ) 
   {
     this.id = this.ar.snapshot.paramMap.get("id");
   }
 
   ngOnInit(): void {
+    this.as.sysadminAuth();
     //this.id = this.data.id
     this.getPregunta(this.id)
   }

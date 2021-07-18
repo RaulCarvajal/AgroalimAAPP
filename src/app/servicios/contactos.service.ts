@@ -23,4 +23,12 @@ export class ContactosService {
   getFullOne(id:number){
     return this.http.get<contacto>(`${api.path}admin_contactos/${id}`);
   }
+
+  getContactoByUsername(username:string){
+    return this.http.get<contacto[]>(`${api.path}contactosPorUsername?username=${username}`);
+  }
+
+  save(data:any){
+    return this.http.post<contacto>(`${api.path}contactos`,data);
+  }
 }
