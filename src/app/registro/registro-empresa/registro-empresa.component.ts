@@ -7,6 +7,8 @@ import { EmpresasService } from 'src/app/servicios/empresas.service';
 import { regex } from "./../../validators/regex.consts";
 import { RfcexistenteSnackbarComponent } from "./../../snackbar/rfcexistente-snackbar/rfcexistente-snackbar.component";
 import { RegistroComponent } from '../registro.component';
+import { organizacion, organizacionesempresa, org_emp } from 'src/app/interfaces/organizacionesempresa.interface';
+import { OrganizacionesempresaService } from 'src/app/servicios/organizacionesempresa.service';
 
 @Component({
   selector: 'app-registro-empresa',
@@ -18,18 +20,21 @@ export class RegistroEmpresaComponent implements OnInit {
   empresaForm:FormGroup;
   sectores_atendidos:sector_atendido[] = [];
   cargando:boolean = true;
+  organizaciones:organizacion[] = [];
 
   constructor(
     private fb:FormBuilder,
     private cs:CatalogosService,
     private es:EmpresasService,
     private sb:MatSnackBar,
-    private rc:RegistroComponent
+    private rc:RegistroComponent,
+    private oes:OrganizacionesempresaService
   ) { }
 
   ngOnInit(): void {
     this.initForm()
     this.getSectoresAtendidos();
+    this.getOrganizaciones();
   }
   
   initForm(){
@@ -46,13 +51,13 @@ export class RegistroEmpresaComponent implements OnInit {
       instagram : [null,[Validators.maxLength(100),Validators.pattern(regex.url)]],
       sectores_atendidos : [null,[Validators.maxLength(250),Validators.pattern(regex.white_space)]],
       principales_clientes : [null,[Validators.maxLength(250),Validators.pattern(regex.white_space)]],
+      organizaciones : [null,[Validators.required]]
     })
   }
 
   saveEmpresa(){
     this.cargando = true;
     this.empresaForm.value.sectores_atendidos = this.empresaForm.value.sectores_atendidos.join(",")
-    console.log(this.empresaForm.value);
     this.es.getByRfc(this.empresaForm.value.rfc).subscribe(
       res => {
         if(res.length){
@@ -62,6 +67,7 @@ export class RegistroEmpresaComponent implements OnInit {
           this.es.save(this.empresaForm.value).subscribe(
             res => {
               window.localStorage.setItem("ridne", `${res.id_empresa}`);
+              this.saveOrgEmp(this.empresaForm.value.organizaciones, res.id_empresa);
               this.rc.guardarContacto();
               this.cargando = false;
             },
@@ -75,7 +81,6 @@ export class RegistroEmpresaComponent implements OnInit {
         console.log(err);
       }
     )
-    
   }
 
   getSectoresAtendidos(){
@@ -94,4 +99,20 @@ export class RegistroEmpresaComponent implements OnInit {
     });
   }
 
+  getOrganizaciones(){
+    this.cs.getCatalogoOrganizacionesEmpresariales().subscribe(
+      res => this.organizaciones = res,
+      err => console.log(err)
+    )
+  }
+
+  async saveOrgEmp(fk_id_organizaciones:number[],id_empresa:number){
+    for await (const fk_id_org of fk_id_organizaciones) {
+      let org_emp:any = {
+        fk_id_empresa : id_empresa,
+        fk_id_org : fk_id_org
+      }
+      let res = await this.oes.saveOrganizacionEmpresa(org_emp);
+    }
+  }
 }

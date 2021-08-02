@@ -10,8 +10,9 @@
         <p class="text-break"><b>RFC</b> {{empresa.rfc}}</p>
         <p class="text-break"><b>Fundada en </b> {{empresa.fecha_creacion | date}}</p>
         <p class="text-break">{{empresa.descripcion_oferta_valor}}</p>
-        <p class="text-break"><b>Los principales clientes son los siguientes</b> - {{empresa.principales_clientes}}</p>
-        <p class="text-break"><b>Los sectores atendidos son los siguientes</b> - {{empresa.sectores_atendidos}}</p>
+        <p class="text-break"><b>Principales clientes son los siguientes</b> - {{empresa.principales_clientes}}</p>
+        <p class="text-break"><b>Sectores atendidos son los siguientes</b> - {{empresa.sectores_atendidos.split(',').join(', ')}}</p>
+        <p class="text-break" *ngIf="org_emp.length"><b>Oranizaciones a las que pertenece</b> - {{org_emp.join(', ')}}</p>
     </mat-card-content>
     <mat-card-actions>
         <div>
@@ -25,6 +26,9 @@
         </div>
     </mat-card-actions>
 </mat-card>
+
+<app-direcciones></app-direcciones>
+
 <mat-card *ngIf="cargando_empresa">
     <div class="row">
         <div class="col">

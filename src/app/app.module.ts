@@ -34,6 +34,9 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import { ChartsModule } from 'ng2-charts';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 /*ANGULAR MATERIAL IMPORTS*/
 
 import { CatalogosComponent } from './catalogos/catalogos.component';
@@ -72,6 +75,10 @@ import { RegistroContactoComponent } from './registro/registro-contacto/registro
 import { RegistroComponent } from './registro/registro.component';
 import { RfcexistenteSnackbarComponent } from './snackbar/rfcexistente-snackbar/rfcexistente-snackbar.component';
 import { ContactoexistenteSnackbarComponent } from './snackbar/contactoexistente-snackbar/contactoexistente-snackbar.component';
+import { FinalizarencuestaSnackbarComponent } from './snackbar/finalizarencuesta-snackbar/finalizarencuesta-snackbar.component';
+import { DireccionesComponent } from './direcciones/direcciones.component';
+import { DireccionComponent } from './direcciones/direccion/direccion.component';
+import { NuevaDireccionComponent } from './direcciones/nueva-direccion/nueva-direccion.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +111,11 @@ import { ContactoexistenteSnackbarComponent } from './snackbar/contactoexistente
     RegistroContactoComponent,
     RegistroComponent,
     RfcexistenteSnackbarComponent,
-    ContactoexistenteSnackbarComponent
+    ContactoexistenteSnackbarComponent,
+    FinalizarencuestaSnackbarComponent,
+    DireccionesComponent,
+    DireccionComponent,
+    NuevaDireccionComponent
   ],
   imports: [
     BrowserModule,
@@ -132,7 +143,10 @@ import { ContactoexistenteSnackbarComponent } from './snackbar/contactoexistente
     MatRippleModule,
     MatDialogModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    ChartsModule,
+    MatButtonToggleModule,
+    MatAutocompleteModule
   ],
   providers: [
     PuestosService,

@@ -14,7 +14,8 @@
             <button class="w-100" mat-button (click)="onNoClick()">Cerrar</button>
         </div>
         <div class="col">
-            <button class="w-100" mat-button (click)="gotoResponder(data.id_encuesta)" [disabled]="data.preguntas?false:true">{{data.preguntas?'Comenzar encuesta':'Sin preguntas'}}</button>
+            <button class="w-100" *ngIf="!contestada" mat-button (click)="gotoResponder(data.id_encuesta)" [disabled]="data.preguntas?false:true">{{data.preguntas?'Comenzar encuesta':'Sin preguntas'}}</button>
+            <button class="w-100" *ngIf="contestada" mat-button (click)="gotoResultados(data.id_encuesta)">Ver resultados</button>
         </div>
     </div>
 </div>

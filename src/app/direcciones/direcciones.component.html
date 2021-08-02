@@ -1,0 +1,48 @@
+<mat-card class="mt-3">
+    <mat-card-header>
+        <mat-card-title>Direcciones de mi empresa</mat-card-title>
+        <mat-card-subtitle>Lugares físicos donde se encuentra tu empresa. Esta informacion nos sirve para poder comparar tus resultados contra empresas de tu zona.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="row" *ngIf="cargando">
+            <div class="col">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+        <div class="row" *ngIf="!cargando">
+            <div class="col text-center" *ngIf="direcciones.length == 0">
+                <p class="lead">Aún no tienes direcciones guardadas</p>
+            </div>
+            <div class="col" *ngIf="direcciones.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Municipio</th>
+                        <th scope="col">Tipo sede</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let dir of direcciones; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{dir.direccion}}</td>
+                        <td>{{dir.estado}}</td>
+                        <td>{{dir.municipio}}</td>
+                        <td>{{dir.sede}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <button mat-button (click)="openNewDireccion()" color="primary"><mat-icon>add</mat-icon> Nueva dirección</button>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+</mat-card>

@@ -49,24 +49,29 @@ export class LogonComponent implements OnInit {
   }
 
   tryLogonUser():boolean{
-    this.trying = true;
-    this.as.logon(this.loginForm.value).subscribe(
-      res => {
-        if(res){
-          this.trying = false;
-          this.as.saveSession(res);
-          window.location.reload();
-        }else{
+    if(this.loginForm.valid){
+      this.trying = true;
+      this.as.logon(this.loginForm.value).subscribe(
+        res => {
+          if(res){
+            this.trying = false;
+            this.as.saveSession(res);
+            window.location.reload();
+          }else{
+            this.trying = false;
+            this.fail = true;
+          }
+        },
+        err => {
           this.trying = false;
           this.fail = true;
         }
-      },
-      err => {
-        this.trying = false;
-        this.fail = true;
-      }
-    );
-    return true
+      );
+      return true
+    }else{
+      return false
+    }
+    
   }
   
   tryLogonSysAdmin():boolean{

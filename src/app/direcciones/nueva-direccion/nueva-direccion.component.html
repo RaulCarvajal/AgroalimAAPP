@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Nueva dirección</h2>
+<mat-dialog-content class="container w-100">
+    <form [formGroup]="dirForm" (ngSubmit)="saveAddress()">
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="w-100">
+                    <input matInput placeholder="Dirección" formControlName="direccion">
+                    <mat-error *ngIf="dirForm.get('direccion')!.hasError('maxlength')">Máximo 150 caracteres</mat-error>
+                    <mat-error *ngIf="dirForm.get('direccion')!.hasError('required')">Este campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="w-100">
+                    <mat-label>Tipo de sede</mat-label>
+                    <mat-select formControlName="tipo_sede" class="md-select-menu-container">
+                        <mat-option *ngFor="let sede of sedes" [value]="sede.id_cat_sede">{{sede.tipo_sede}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="dirForm.get('tipo_sede')!.hasError('required')" class="text-danger">Este campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="w-100">
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="estado" class="md-select-menu-container" (selectionChange)="getMunicipios()">
+                        <mat-option *ngFor="let estado of estados" [value]="estado.nombre_estado">{{estado.nombre_estado}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="dirForm.get('estado')!.hasError('required')" class="text-danger">Este campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="w-100">
+                    <mat-label>Municipio</mat-label>
+                    <mat-select formControlName="municipio" class="md-select-menu-container">
+                        <mat-option *ngFor="let municipio of municipios" [value]="municipio.nombre_municipio">{{municipio.nombre_municipio}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="dirForm.get('municipio')!.hasError('required')" class="text-danger">Este campo requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" [disabled]="dirForm.invalid" (click)="saveAddress()">Guardar</button>
+</mat-dialog-actions>

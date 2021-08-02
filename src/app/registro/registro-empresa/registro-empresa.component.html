@@ -81,7 +81,17 @@
                     </mat-form-field>
                 </div>
             </div>
-            
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Oranizaciones a las que pertenece</mat-label>
+                        <mat-select multiple formControlName="organizaciones">
+                            <mat-option *ngFor="let organizacion of organizaciones" [value]="organizacion.id_cat_oe">{{organizacion.nombre_orgemp}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="empresaForm.get('organizaciones')!.hasError('required')">Campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
             <mat-divider></mat-divider>
             <div class="row mt-1">
                 <div class="col">

@@ -22,6 +22,7 @@ import { ResponderencuestaComponent } from "./encuestasusuarios/responderencuest
 import { MiempresausuariosComponent } from './miempresausuarios/miempresausuarios.component';
 import { NoautorizadoComponent } from './noautorizado/noautorizado.component';
 import { RegistroComponent } from './registro/registro.component';
+import { ResultadosencuestaComponent } from "./encuestasusuarios/resultadosencuesta/resultadosencuesta.component";
 
 const routes: Routes = [
   {path : "logon", component : LogonComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path : "contactos/:id", component : ContactoComponent},
   {path : "encuestas", component : EncuestasusuariosComponent},
   {path : "encuestas/respoder/:id", component : ResponderencuestaComponent},
+  {path : "encuestas/resultados/:id", component : ResultadosencuestaComponent},
   {path : "encuestas/admin", component : EncuestasComponent},
   {path : "encuestas/admin/nueva", component : NuevaencuestaComponent},
   {path : "encuestas/admin/:id", component : EncuestaComponent},

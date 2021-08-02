@@ -26,7 +26,7 @@ export class RegistroContactoComponent implements OnInit {
     private cns:ContactosService,
     private sb:MatSnackBar,
     private as:AuthService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.ide = +window.localStorage.getItem("ridne")!;
@@ -52,7 +52,6 @@ export class RegistroContactoComponent implements OnInit {
   }
 
   saveContacto(){
-    console.log(this.formContacto.value)
     this.cargando = true;
     this.cns.getContactoByUsername(this.formContacto.value.nombre_usuario).subscribe(
       res => {

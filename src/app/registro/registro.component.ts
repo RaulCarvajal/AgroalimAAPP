@@ -14,7 +14,8 @@ export class RegistroComponent implements OnInit {
   constructor(
     private as:AuthService,
     private rt:Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.existsEmpresaId();

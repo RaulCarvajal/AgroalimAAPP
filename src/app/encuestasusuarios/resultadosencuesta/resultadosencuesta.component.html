@@ -1,1 +1,118 @@
-<p>resultadosencuesta works!</p>
+<div  *ngIf="respuestas.length"><!--Despues de cargar-->
+  <mat-card> <!--Resultados-->
+    <mat-card-header>
+        <mat-card-title>Resultados</mat-card-title>
+        <mat-card-subtitle>Esta empresa ya contestó la encuesta <strong>{{encuesta.nombre}}</strong> y los resultados son los siguientes.</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-list>
+            <div mat-subheader>Folders</div>
+            <mat-list-item *ngFor="let r of respuestas">
+              <mat-icon mat-list-icon>question_answer</mat-icon>
+              <div mat-line><em>{{r.pregunta}}</em></div>
+              <div mat-line>{{r.opcion}} - Respondida por {{r.contacto}} el {{r.fecha_respuesta | date}}</div>
+            </mat-list-item>
+          </mat-list>
+    </mat-card-content>
+
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="mt-2" *ngIf="charts"><!--Graficas generales todas la empresas-->
+    <mat-card-header>
+      <mat-card-title>Resultados Generales</mat-card-title>
+      <mat-card-subtitle>Graficas de los resultados al día de hoy.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <mat-button-toggle-group [(ngModel)]="ChartType">
+              <mat-button-toggle value="line">
+                Líneas
+              </mat-button-toggle>
+              <mat-button-toggle value="bar">
+                Barras
+              </mat-button-toggle>
+              <mat-button-toggle value="pie">
+                Pastel
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+      </div>
+      <div class="container mt-2" *ngFor="let res of respuestas_chart; let i = index ">
+        <div class="row">
+          <div class="col">
+            <p><strong><em>{{respuestas[i].pregunta}}</em></strong></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Opcion</th>
+                  <th scope="col" class="text-center">Veces Elegida</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let r of res;let i = index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{r.texto}}</td>
+                  <td class="text-center">{{r.valor}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+            <canvas baseChart class="mt-auto"
+            [datasets]="ChartData[i].ChartDataSets"
+            [labels]="ChartLabels[i].Labels"
+            [options]="ChartOptions"
+            [legend]="ChartLegend"
+            [chartType]="ChartType">
+          </canvas>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mt-2">
+    <mat-card-header>
+      <mat-card-title>
+        Otras estadisticas
+      </mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="container">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="w-100">
+            <mat-label>Comparar contra una organización a la que pertenece tu empresa</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let organizacion of organizaciones" value="organizacion.id_organizacon">{{organizacion.organizacion}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="respuestas.length==0">
+  <mat-card>
+    <div class="row">
+      <div class="col">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </div>
+  </mat-card>
+</div>
