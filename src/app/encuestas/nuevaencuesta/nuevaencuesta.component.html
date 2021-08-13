@@ -63,6 +63,7 @@
         </form>
         <!--Form Encuesta-->
         <!--Form Preguntas-->
+        
         <form [formGroup]="preguntaForm" (ngSubmit)="savePreguntas()" *ngIf="idEncuestaGuardada>0">
             <div class="row">
                 <div class="col">
@@ -98,6 +99,11 @@
             <div class="row">
                 <div class="col">
                     <button [disabled]="preguntaForm.invalid" mat-button color="primary" class="w-100"><mat-icon>save</mat-icon> Guardar</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" *ngIf="idEncuestaGuardada>0">
+                    <p><span><mat-icon class="inline-icon">announcement</mat-icon></span> Si desea ver sus resultados en una <a target="_blank" href="http://www.cyta.com.ar/biblioteca/bddoc/bdlibros/herramientas_calidad/radar.htm">gráfica de radar</a>, entonces todas sus preguntas deberán tener el mismo número de opciones para responder. Y organice sus opciones de menor a mayor valor.</p> 
                 </div>
             </div>
         </form>

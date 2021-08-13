@@ -5,6 +5,7 @@
         <mat-card-subtitle>Esta empresa ya contestó la encuesta <strong>{{encuesta.nombre}}</strong> y los resultados son los siguientes.</mat-card-subtitle>
     </mat-card-header>
 
+    <!--
     <mat-card-content>
         <mat-list>
             <div mat-subheader>Folders</div>
@@ -15,7 +16,7 @@
             </mat-list-item>
           </mat-list>
     </mat-card-content>
-
+    -->
     <mat-card-actions>
 
     </mat-card-actions>
@@ -30,7 +31,7 @@
       <div class="container">
         <div class="row">
           <div class="col text-center">
-            <mat-button-toggle-group [(ngModel)]="ChartType">
+            <mat-button-toggle-group (change)="changeChartType()" [(ngModel)]="ChartType">
               <mat-button-toggle value="line">
                 Líneas
               </mat-button-toggle>
@@ -40,6 +41,9 @@
               <mat-button-toggle value="pie">
                 Pastel
               </mat-button-toggle>
+              <mat-button-toggle value="radar">
+                Radar
+              </mat-button-toggle>
             </mat-button-toggle-group>
           </div>
         </div>
@@ -48,6 +52,7 @@
         <div class="row">
           <div class="col">
             <p><strong><em>{{respuestas[i].pregunta}}</em></strong></p>
+            <p>La opción elegida por mi empresa fúe <strong><em>{{respuestas[i].opcion}}</em></strong></p>
           </div>
         </div>
         <div class="row">
@@ -69,14 +74,24 @@
               </tbody>
             </table>
           </div>
-          <div class="col">
+        </div>
+        <div class="row">
+          <div class="col" *ngIf="!showRadar">
             <canvas baseChart class="mt-auto"
             [datasets]="ChartData[i].ChartDataSets"
             [labels]="ChartLabels[i].Labels"
             [options]="ChartOptions"
             [legend]="ChartLegend"
             [chartType]="ChartType">
-          </canvas>
+            </canvas>
+          </div>
+          <div class="col" *ngIf="showRadar">
+            <canvas baseChart
+            [datasets]="ChartData[i].ChartDataSets"
+            [options]="radarChartOptions"
+            [labels]="ChartLabels[i].Labels"
+            [chartType]="ChartType">
+            </canvas>
           </div>
         </div>
         <mat-divider></mat-divider>
@@ -95,17 +110,18 @@
     <mat-card-content class="container">
       <div class="row">
         <div class="col">
-          <mat-form-field class="w-100">
-            <mat-label>Comparar contra una organización a la que pertenece tu empresa</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let organizacion of organizaciones" value="organizacion.id_organizacon">{{organizacion.organizacion}}</mat-option>
-                </mat-select>
-            </mat-form-field>
+          <canvas baseChart
+            [datasets]="radarChartData"
+            [options]="radarChartOptions"
+            [labels]="radarChartLabels"
+            [chartType]="radarChartType">
+          </canvas>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
 </div>
+<br><br><br>
 
 <div *ngIf="respuestas.length==0">
   <mat-card>

@@ -39,11 +39,11 @@ export class RegistroEmpresaComponent implements OnInit {
   
   initForm(){
     this.empresaForm = this.fb.group({
-      nombre : ["",[Validators.required,Validators.maxLength(150),Validators.pattern(regex.white_space)]],
-      razon_social : ["",[Validators.required,Validators.maxLength(150),Validators.pattern(regex.white_space)]],
-      rfc : ["",[Validators.required,Validators.maxLength(13),Validators.pattern(regex.rfc)]],
-      fecha_creacion : ["",[Validators.required]],
-      descripcion_oferta_valor : ["",[Validators.required,Validators.maxLength(500)]],
+      nombre : ["",[Validators.maxLength(150),Validators.pattern(regex.white_space)]],
+      razon_social : ["",[Validators.maxLength(150),Validators.pattern(regex.white_space)]],
+      rfc : ["",[Validators.maxLength(13),Validators.pattern(regex.rfc)]],
+      fecha_creacion : ["",[]],
+      descripcion_oferta_valor : ["",[Validators.maxLength(500)]],
       web : [null,[Validators.maxLength(200),Validators.pattern(regex.url)]],
       linkedin : [null,[Validators.maxLength(100),Validators.pattern(regex.url)]],
       facebook : [null,[Validators.maxLength(100),Validators.pattern(regex.url)]],
@@ -58,7 +58,7 @@ export class RegistroEmpresaComponent implements OnInit {
   saveEmpresa(){
     this.cargando = true;
     this.empresaForm.value.sectores_atendidos = this.empresaForm.value.sectores_atendidos.join(",")
-    this.es.getByRfc(this.empresaForm.value.rfc).subscribe(
+    /*this.es.getByRfc(this.empresaForm.value.rfc).subscribe(
       res => {
         if(res.length){
           this.rfcExistenteSb()
@@ -80,7 +80,18 @@ export class RegistroEmpresaComponent implements OnInit {
       err => {
         console.log(err);
       }
-    )
+    )*/
+    this.es.save(this.empresaForm.value).subscribe(
+      res => {
+        window.localStorage.setItem("ridne", `${res.id_empresa}`);
+        this.saveOrgEmp(this.empresaForm.value.organizaciones, res.id_empresa);
+        this.rc.guardarContacto();
+        this.cargando = false;
+      },
+      err => {
+        this.cargando = false
+      }
+    );
   }
 
   getSectoresAtendidos(){

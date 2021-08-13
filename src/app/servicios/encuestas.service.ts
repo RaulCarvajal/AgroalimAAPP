@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { encuesta, encuesta_tabla_admin, encuesta_tabla_user } from '../interfaces/encuestas.interface';
-import { qa, qa_text } from '../interfaces/qa.interface';
+import { qa, qa_radar, qa_text } from '../interfaces/qa.interface';
 import { api } from "./server.path";
 
 @Injectable({
@@ -47,5 +47,12 @@ export class EncuestasService {
 
   async getResultadosGenerales(id_respuesta:number){
     return await this.http.get(`${api.path}resultadosgeneralesporidrespuesta?id_respuesta=${id_respuesta}`).toPromise();
+  }
+
+  getMisResultadosParaRadar(id_encuesta:number, id_empresa:number){
+    return this.http.get<qa_radar[]>(`${api.path}misrespuestasradar?id_encuesta=${id_encuesta}&id_empresa=${id_empresa}`);
+  }
+  async getPromedioGeneralPregunta(id_pregunta:number){
+    return await this.http.get(`${api.path}promediogeneralpregunta/${id_pregunta}`).toPromise();
   }
 }

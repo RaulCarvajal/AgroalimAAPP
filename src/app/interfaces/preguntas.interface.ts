@@ -11,7 +11,8 @@ export interface opcion {
     id_opcion: number,
     fk_id_pregunta: number,
     texto: string,
-    estatus: boolean
+    estatus: boolean,
+    valor: number
 }
 
 export interface pregunta {

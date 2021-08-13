@@ -23,3 +23,11 @@ export interface qa_chart {
 export interface qa_chart_res {
     val : qa_chart[]
 }
+
+export interface qa_radar {
+    fecha_respuesta: string | undefined,
+    id_respuesta: number | undefined,
+    opcion: string | undefined,
+    pregunta: string,
+    valor: number
+}

@@ -17,8 +17,7 @@
                 <div class="col">
                     <mat-form-field class="w-100">
                         <mat-label>Nombre empresa</mat-label>
-                        <input type="text" matInput formControlName="nombre" placeholder="Nombre de tu empresa" required>
-                        <mat-error *ngIf="empresaForm.get('nombre')!.hasError('required')">Campo requerido</mat-error>
+                        <input type="text" matInput formControlName="nombre" placeholder="Nombre de tu empresa" >
                         <mat-error *ngIf="empresaForm.get('nombre')!.hasError('pattern')">Nombre inválido</mat-error>
                         <mat-error *ngIf="empresaForm.get('nombre')!.hasError('maxlength')">Máximo 150 carácteres</mat-error>
                     </mat-form-field>
@@ -26,8 +25,7 @@
                 <div class="col">
                     <mat-form-field class="w-100">
                         <mat-label>Razón social</mat-label>
-                        <input type="text" matInput formControlName="razon_social" placeholder="Razón social de tu empresa" required>
-                        <mat-error *ngIf="empresaForm.get('razon_social')!.hasError('required')">Campo requerido</mat-error>
+                        <input type="text" matInput formControlName="razon_social" placeholder="Razón social de tu empresa" >
                         <mat-error *ngIf="empresaForm.get('razon_social')!.hasError('pattern')">Razón social inválido</mat-error>
                         <mat-error *ngIf="empresaForm.get('razon_social')!.hasError('maxlength')">Máximo 150 carácteres</mat-error>
                     </mat-form-field>
@@ -37,8 +35,7 @@
                 <div class="col">
                     <mat-form-field class="w-100">
                         <mat-label>RFC</mat-label>
-                        <input type="text" matInput formControlName="rfc" placeholder="Registro Federal de Contribuyentes de tu empresa" required>
-                        <mat-error *ngIf="empresaForm.get('rfc')!.hasError('required')">Campo requerido</mat-error>
+                        <input type="text" matInput formControlName="rfc" placeholder="Registro Federal de Contribuyentes de tu empresa" >
                         <mat-error *ngIf="empresaForm.get('rfc')!.hasError('pattern')">RFC inválido</mat-error>
                         <mat-error *ngIf="empresaForm.get('rfc')!.hasError('maxlength')">Máximo 13 carácteres</mat-error>
                     </mat-form-field>
@@ -46,8 +43,7 @@
                 <div class="col">
                     <mat-form-field class="w-100">
                         <mat-label>Fecha de creación</mat-label>
-                        <input type="date" matInput formControlName="fecha_creacion" placeholder="Cuando se fundó tu empresa" required>
-                        <mat-error *ngIf="empresaForm.get('fecha_creacion')!.hasError('required')">Campo requerido</mat-error>
+                        <input type="date" matInput formControlName="fecha_creacion" placeholder="Cuando se fundó tu empresa" >
                     </mat-form-field>
                 </div>
             </div>
@@ -55,8 +51,7 @@
                 <div class="col">
                     <mat-form-field class="w-100">
                         <mat-label>Descripción de tu empresa</mat-label>
-                        <textarea type="text" matInput formControlName="descripcion_oferta_valor" placeholder="Dinos una descripción corta de tu empresa (Max. 500 Caractéres)" required></textarea>
-                        <mat-error *ngIf="empresaForm.get('descripcion_oferta_valor')!.hasError('required')">Campo requerido</mat-error>
+                        <textarea type="text" matInput formControlName="descripcion_oferta_valor" placeholder="Dinos una descripción corta de tu empresa (Max. 500 Caractéres)"></textarea>
                         <mat-error *ngIf="empresaForm.get('descripcion_oferta_valor')!.hasError('maxlength')">Máximo 500 carácteres</mat-error>
                     </mat-form-field>
                 </div>

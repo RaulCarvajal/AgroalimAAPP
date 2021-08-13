@@ -37,6 +37,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ChartsModule } from 'ng2-charts';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 /*ANGULAR MATERIAL IMPORTS*/
 
 import { CatalogosComponent } from './catalogos/catalogos.component';
@@ -79,6 +80,7 @@ import { FinalizarencuestaSnackbarComponent } from './snackbar/finalizarencuesta
 import { DireccionesComponent } from './direcciones/direcciones.component';
 import { DireccionComponent } from './direcciones/direccion/direccion.component';
 import { NuevaDireccionComponent } from './direcciones/nueva-direccion/nueva-direccion.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +117,8 @@ import { NuevaDireccionComponent } from './direcciones/nueva-direccion/nueva-dir
     FinalizarencuestaSnackbarComponent,
     DireccionesComponent,
     DireccionComponent,
-    NuevaDireccionComponent
+    NuevaDireccionComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -146,7 +149,8 @@ import { NuevaDireccionComponent } from './direcciones/nueva-direccion/nueva-dir
     MatMenuModule,
     ChartsModule,
     MatButtonToggleModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     PuestosService,

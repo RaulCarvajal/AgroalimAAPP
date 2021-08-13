@@ -23,8 +23,9 @@ import { MiempresausuariosComponent } from './miempresausuarios/miempresausuario
 import { NoautorizadoComponent } from './noautorizado/noautorizado.component';
 import { RegistroComponent } from './registro/registro.component';
 import { ResultadosencuestaComponent } from "./encuestasusuarios/resultadosencuesta/resultadosencuesta.component";
-
+import { LandingComponent } from "./landing/landing.component";
 const routes: Routes = [
+  {path : "", component : LandingComponent},
   {path : "logon", component : LogonComponent},
   {path : "registro", component : RegistroComponent},
   {path : "catalogos", component : CatalogosComponent},

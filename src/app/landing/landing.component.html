@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Bienvenido al sistema de ecuestas de Agroalim.</mat-card-title>
+        <mat-card-subtitle>Agroalim es una asociación civil sin fines de lucro que impulsa la competitividad del sector agroalimentario de Nuevo León mediante el modelo de triple hélice.</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4  mt-3" *ngFor="let encuesta of encuestas">
+        <mat-card class="mt-3">
+            <mat-card-header>
+                <div mat-card-avatar><mat-icon>ballot</mat-icon></div>
+                <mat-card-title>{{encuesta.nombre}}</mat-card-title>
+                <mat-card-subtitle>Vigencia hasta {{encuesta.fecha_vigencia | date}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/encuesta.jpg" alt="Contrato imagen">
+            <mat-card-content>
+                <p class="text-break">
+                    {{encuesta.descripcion}}
+                </p>
+                <p>
+                    Cuenta con un total de {{encuesta.preguntas}} preguntas.
+                </p>
+            </mat-card-content>
+            <mat-card-actions class="text-end">
+                <a role="button" mat-button [routerLink]="['/encuestas/respoder/'+encuesta.id_encuesta]"><mat-icon>question_answer</mat-icon> Responder</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+<mat-card *ngIf="cargando_encuestas">
+    <mat-progress-spinner class="mx-auto" mode="indeterminate"></mat-progress-spinner>
+</mat-card>
+

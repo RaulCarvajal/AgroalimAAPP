@@ -1,9 +1,9 @@
 <mat-toolbar color="primary" *ngIf="logeado">
-    <button mat-icon-button class="example-icon" (click)="open()" #tooltip="matTooltip" matTooltip="Home" matTooltipHideDelay="500">
-        <mat-icon>menu</mat-icon>
+    <button mat-icon-button class="example-icon" [routerLink]="['/']" #tooltip="matTooltip" matTooltip="Home" matTooltipHideDelay="500">
+        <mat-icon>home</mat-icon>
     </button>
 
-    <span>AAS - {{myname}} {{myrole}}</span>
+    <span>Agroalim Encuestas - {{myname}}</span>
     <span class="example-spacer"></span>
 
     <a *ngIf="admin || colaborador" role="button" mat-icon-button class="example-icon" [routerLink]="['/encuestas']" #tooltip="matTooltip" matTooltip="Encuestas" matTooltipHideDelay="500">
@@ -34,10 +34,10 @@
         <mat-icon>person</mat-icon>
     </a>
     <mat-menu #micuentaMenu="matMenu">
-        <button mat-menu-item [routerLink]="['/micuenta']" #tooltip="matTooltip" matTooltip="Mi cuenta" matTooltipHideDelay="500">
+        <!--<button mat-menu-item [routerLink]="['/micuenta']" #tooltip="matTooltip" matTooltip="Mi cuenta" matTooltipHideDelay="500">
             <mat-icon>person</mat-icon>
             <span>Mi cuenta</span>
-        </button>
+        </button>-->
         <button mat-menu-item (click)="closeSession()" #tooltip="matTooltip" matTooltip="Cerrar sesión" matTooltipHideDelay="500">
             <mat-icon>logout</mat-icon>
             <span>Cerrar sesión</span>

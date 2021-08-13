@@ -78,7 +78,7 @@ export class NuevaencuestaComponent implements OnInit {
         this.fb.group({
           texto : ["",[Validators.required,Validators.maxLength(300),Validators.pattern(regex.white_space)]], 
           estatus : [true,[]], 
-          fk_id_pregunta : [null,[]] 
+          fk_id_pregunta : [null,[]]
         })
       ])
     });
@@ -91,7 +91,7 @@ export class NuevaencuestaComponent implements OnInit {
     this.cargando = true;
     this.ps.saveOne(pregunta).subscribe(
       res => {
-        this.preguntas.push(pregunta.pregunta);
+        this.preguntas.push(`${pregunta.pregunta}, con ${pregunta.opciones.length} opciones de respuesta`);
         this.cargando = false;
         this.initPreguntaForm();
       },
@@ -108,7 +108,7 @@ export class NuevaencuestaComponent implements OnInit {
       {
         texto : ["",[Validators.required,Validators.maxLength(300),Validators.pattern(regex.white_space)]], 
         estatus : [true,[]], 
-        fk_id_pregunta : [null,[]] 
+        fk_id_pregunta : [null,[]]
       }
     ));
   }
@@ -130,6 +130,5 @@ export class NuevaencuestaComponent implements OnInit {
       this.lc.back();
     }, 3000);
   }
-
 
 }
