@@ -54,9 +54,11 @@ export class LogonComponent implements OnInit {
       this.as.logon(this.loginForm.value).subscribe(
         res => {
           if(res){
-            this.trying = false;
             this.as.saveSession(res);
-            window.location.reload();
+            setTimeout(() => {
+              this.trying = false;
+              window.location.reload();
+            }, 1000);
           }else{
             this.trying = false;
             this.fail = true;

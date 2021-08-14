@@ -45,8 +45,6 @@ export class AuthService {
 
   saveSession(res : any){
     sessionStorage.setItem('contacto' ,JSON.stringify(res));
-    //this.rt.navigateByUrl("/")
-    window.location.reload();
   }
 
   getContactoId():number{

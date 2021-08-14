@@ -46,7 +46,7 @@ export class NuevaencuestaComponent implements OnInit {
       nombre : [null, [Validators.required,Validators.maxLength(250),Validators.pattern(regex.white_space)]],
       descripcion : [null, [Validators.required,Validators.maxLength(500),Validators.pattern(regex.white_space)]],
       fecha_vigencia : [null, [Validators.required]],
-      eversion : [0.01, [Validators.required]],
+      eversion : [1.0, [Validators.required]],
       fecha_registro : [null,[]],
       estatus : [0],
       fk_id_administrador : [this.as.getSysAdminId()]
@@ -71,12 +71,13 @@ export class NuevaencuestaComponent implements OnInit {
   initPreguntaForm(){
     this.preguntaForm = this.fb.group({
       pregunta : ["",[Validators.required,Validators.maxLength(300),Validators.pattern(regex.white_space)]],
+      etiqueta : ["",[Validators.required,Validators.maxLength(25),Validators.pattern(regex.white_space)]],
       fecha_registro : ["",[]],
       estatus : [1,[]],
       fk_id_encuesta : [this.idEncuestaGuardada,[]],
       opciones : this.fb.array([
         this.fb.group({
-          texto : ["",[Validators.required,Validators.maxLength(300),Validators.pattern(regex.white_space)]], 
+          texto : ["",[Validators.required,Validators.maxLength(300),Validators.pattern(regex.white_space)]],
           estatus : [true,[]], 
           fk_id_pregunta : [null,[]]
         })

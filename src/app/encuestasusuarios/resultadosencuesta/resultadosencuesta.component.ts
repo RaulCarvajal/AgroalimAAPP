@@ -123,7 +123,7 @@ export class ResultadosencuestaComponent implements OnInit {
       const element:qa_chart[] = this.respuestas_chart[index];
       if(index>0){
         this.ChartLabels.push( { Labels : []} );
-        this.ChartData.push( { ChartDataSets : [{ data: [] }]} );
+        this.ChartData.push( { ChartDataSets : [{ data: [], label : 'Respuestas' }]} );
       }
       element.forEach(e=>{
         this.ChartLabels[index].Labels.push(e.texto);
@@ -135,6 +135,9 @@ export class ResultadosencuestaComponent implements OnInit {
   //Encuestas! - Barras
 
   //Encuestas radar
+  public radarChartOptionsGeneral: RadialChartOptions = {
+    responsive: true,
+  };
   public radarChartOptions: RadialChartOptions = {
     responsive: true,
     scale : {
@@ -182,8 +185,10 @@ export class ResultadosencuestaComponent implements OnInit {
     );
   }
   setLabels(){
+    let no=1;
     this.respuestas.forEach(e => {
-      this.radarChartLabels.push(e.pregunta)
+      this.radarChartLabels.push(e.etiqueta!);
+      no++;
     })
   }
 }

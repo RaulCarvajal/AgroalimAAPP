@@ -1,11 +1,30 @@
 <div  *ngIf="respuestas.length"><!--Despues de cargar-->
-  <mat-card> <!--Resultados-->
+  <mat-card class="mt-2" *ngIf="charts">
+    <mat-card-header>
+      <mat-card-title>
+        Radar General
+      </mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="container">
+      <div class="row">
+        <div class="col">
+          <canvas baseChart
+            [datasets]="radarChartData"
+            [options]="radarChartOptions"
+            [labels]="radarChartLabels"
+            [chartType]="radarChartType">
+          </canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="mt-2"> <!--Resultados-->
     <mat-card-header>
         <mat-card-title>Resultados</mat-card-title>
         <mat-card-subtitle>Esta empresa ya contestó la encuesta <strong>{{encuesta.nombre}}</strong> y los resultados son los siguientes.</mat-card-subtitle>
     </mat-card-header>
-
-    <!--
     <mat-card-content>
         <mat-list>
             <div mat-subheader>Folders</div>
@@ -16,13 +35,9 @@
             </mat-list-item>
           </mat-list>
     </mat-card-content>
-    -->
-    <mat-card-actions>
-
-    </mat-card-actions>
   </mat-card>
 
-  <mat-card class="mt-2" *ngIf="charts"><!--Graficas generales todas la empresas-->
+  <mat-card class="mt-2" *ngIf="charts">
     <mat-card-header>
       <mat-card-title>Resultados Generales</mat-card-title>
       <mat-card-subtitle>Graficas de los resultados al día de hoy.</mat-card-subtitle>
@@ -88,7 +103,7 @@
           <div class="col" *ngIf="showRadar">
             <canvas baseChart
             [datasets]="ChartData[i].ChartDataSets"
-            [options]="radarChartOptions"
+            [options]="radarChartOptionsGeneral"
             [labels]="ChartLabels[i].Labels"
             [chartType]="ChartType">
             </canvas>
@@ -99,29 +114,9 @@
       </div>
     </mat-card-content>
   </mat-card>
-
-  <mat-card class="mt-2">
-    <mat-card-header>
-      <mat-card-title>
-        Otras estadisticas
-      </mat-card-title>
-      <mat-card-subtitle></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="container">
-      <div class="row">
-        <div class="col">
-          <canvas baseChart
-            [datasets]="radarChartData"
-            [options]="radarChartOptions"
-            [labels]="radarChartLabels"
-            [chartType]="radarChartType">
-          </canvas>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
 </div>
-<br><br><br>
+
+<br>
 
 <div *ngIf="respuestas.length==0">
   <mat-card>

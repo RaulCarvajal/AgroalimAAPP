@@ -15,10 +15,8 @@
                     <mat-form-field class="w-100">
                         <mat-label>Nombre</mat-label>
                         <input matInput placeholder="Nombre de encuesta" formControlName="nombre" required>
+                        <mat-error>Inválido, máximo 250 caracteres, campo requerido</mat-error>
                     </mat-form-field>
-                    <div>
-                        <small class="text-danger">Máximo 250 caracteres</small>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -26,10 +24,8 @@
                     <mat-form-field class="w-100">
                         <mat-label>Descripción</mat-label>
                         <textarea matInput formControlName="descripcion" required></textarea>
+                        <mat-error>Inválido, máximo 500 caracteres, campo requerido</mat-error>
                     </mat-form-field>
-                    <div>
-                        <small class="text-danger">Máximo 500 caracteres</small>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -39,20 +35,15 @@
                         <input matInput [matDatepicker]="picker" formControlName="fecha_vigencia" required>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                        <mat-error>Campo requerido</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col">
                     <mat-form-field class="w-100">
                         <mat-label>Versión</mat-label>
                         <input type="number" matInput placeholder="Versión de encuesta" formControlName="eversion" required>
+                        <mat-error>Campo requerido</mat-error>
                     </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-right">
-                    <div>
-                        <small class="text-danger">* Requerido</small>
-                    </div>
                 </div>
             </div>
             <div class="row">
@@ -70,12 +61,19 @@
                     <mat-form-field class="w-100">
                         <mat-label>Pregunta</mat-label>
                         <input matInput placeholder="Pregunta a realizar" formControlName="pregunta" required>
+                        <mat-error>Inválido, máximo 300 caracteres, campo requerido</mat-error>
                     </mat-form-field>
-                    <div>
-                        <small class="text-danger">Máximo 250 caracteres</small>
-                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="w-100">
+                        <mat-label>Etiqueta para gráfica</mat-label>
+                        <input matInput placeholder="Indique el tema de la pregunta para imprimir en la gráfica" formControlName="etiqueta" required>
+                        <mat-error>Inválido, máximo 25 caracteres, campo requerido</mat-error>
+                    </mat-form-field>
+                </div>
+              </div>
             <div formArrayName="opciones">
                 <div *ngFor="let item of opciones.controls; let pind = index" [formGroupName]="pind">
                   <div class="row">
@@ -83,13 +81,14 @@
                         <mat-form-field class="w-100">
                             <mat-label>Opción</mat-label>
                             <input matInput placeholder="Opcion de respuesta" formControlName="texto" required>
+                            <mat-error>Inválido, máximo 300 caracteres, campo requerido</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-1 text-center">
-                      <button type="button" mat-mini-fab color="warn" (click)="delOpcion(pind)" *ngIf="pind>0" #tooltip="matTooltip" matTooltip="Quitar opción" matTooltipHideDelay="500">
+                      <button type="button" mat-button color="warn" (click)="delOpcion(pind)" *ngIf="pind>0" #tooltip="matTooltip" matTooltip="Quitar opción" matTooltipHideDelay="500">
                         <mat-icon>remove</mat-icon>
                       </button>
-                      <button type="button" mat-mini-fab color="primary" (click)="addOpcion()" *ngIf="pind==0" #tooltip="matTooltip" matTooltip="Añadir opción" matTooltipHideDelay="500">
+                      <button type="button" mat-button color="primary" (click)="addOpcion()" *ngIf="pind==0" #tooltip="matTooltip" matTooltip="Añadir opción" matTooltipHideDelay="500">
                         <mat-icon>add</mat-icon>
                       </button>
                     </div>

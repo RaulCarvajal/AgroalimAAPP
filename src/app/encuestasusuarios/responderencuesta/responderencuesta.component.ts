@@ -125,6 +125,7 @@ export class ResponderencuestaComponent implements OnInit {
         if(res.length/* == this.preguntas.length*/){
           this.preguntasForm.disable();
           this.contestada = true;
+          //this.rt.navigateByUrl(`/encuestas/resultados/${this.encuesta.id_encuesta}`)
         }
       },
       err => {

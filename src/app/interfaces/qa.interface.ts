@@ -12,7 +12,8 @@ export interface qa_text{
     contacto: string,
     fecha_respuesta: string,
     opcion: string,
-    pregunta: string
+    pregunta: string,
+    etiqueta: string | undefined
 }
 
 export interface qa_chart {
